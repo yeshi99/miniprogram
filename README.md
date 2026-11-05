@@ -1,183 +1,117 @@
-# MiniProgram Template
+# 武汉租售 · 小程序
 
-A full-stack miniprogram template built with Taro framework and Express.js backend.
+> 聚焦武汉本地的租房 / 买房一站式信息平台：真实小区数据、区域行情、房贷计算、房源发布，一个全栈可运行的小程序项目。
 
-## Features
+<p align="center">
+  <img src="docs/posters/app/app-poster.png" width="360" alt="武汉租售">
+</p>
 
-- 🚀 **Taro 4.x** - Cross-platform miniprogram framework supporting WeChat, Alipay, ByteDance, and more
-- 🧭 **Bottom TabBar Navigation** - 3-5 tabs for complete user experience (default: 1 tab, expand as needed)
-- 🎨 **React 18** - Modern React with TypeScript support
-- 💎 **Express.js Backend** - RESTful API with TCB managed PostgreSQL
-- 🔐 **Authentication Ready** - JWT token handling built-in
-- 📦 **TypeScript** - Full type safety across frontend and backend
-- 🎯 **JSON-based API Protocol** - Clean and consistent API design
+## 功能一览
 
-## Important: TabBar Navigation
+| 模块 | 能力 |
+| --- | --- |
+| 🏠 首页 | 租/售切换、热搜入口、热门片区榜、区域均价横滑卡、严选推荐、最新上架、学区专题 |
+| 🔍 找房 | 区域两级联动（13 区 + 片区）、价格/户型/面积/朝向/地铁/特色筛选、4 种排序、无限加载 |
+| 📄 房源详情 | 图集轮播、费用明细、**同小区租售对比 + 年租金回报率**、信息/配套/位置三 Tab、相似推荐 |
+| 📈 行情 | 全市均价、近 6 个月走势图、13 区均价/租金排行（红涨绿跌）、租金回报解读 |
+| 🧮 房贷计算器 | 商贷 / 公积金 / 组合贷，等额本息 vs 等额本金实时对比 |
+| ✏️ 发布房源 | 两步表单 + 预览，发布后可上架/下架管理 |
+| 👤 我的 | 收藏、浏览历史、我的发布、求租/求购需求登记 |
 
-**MiniPrograms require 3-5 bottom tab navigation items for optimal user experience.**
+## 页面预览
 
-The template includes 1 default tab. You should expand this to 3-5 tabs based on your app type:
-- **E-commerce**: Home, Categories, Cart, Orders, Profile
-- **Social**: Feed, Discover, Publish, Messages, Profile
-- **Service**: Home, Services, Appointments, Mine
+| 首页 | 找房 | 行情 |
+| --- | --- | --- |
+| ![首页](docs/截图-home.png) | ![找房](docs/截图-list.png) | ![行情](docs/截图-market.png) |
 
-Configure in `frontend/src/app.config.ts` and create corresponding pages.
+| 详情 | 我的 | 计算器 |
+| --- | --- | --- |
+| ![详情](docs/截图-detail.png) | ![我的](docs/截图-mine.png) | ![计算器](docs/截图-calculator.png) |
 
-## Quick Start
+## 技术栈
 
-### Prerequisites
+**前端** `frontend/`
+- [Taro 4.x](https://docs.taro.zone/) + React 18 + TypeScript —— 跨端小程序框架（微信 / 支付宝 / H5 等）
+- SCSS 设计系统（`src/styles/theme.scss`）：信任青绿主色 `#0F766E`、750px 设计稿
+- 自研轻量组件：`PropertyCover` 渐变建筑占位图（规避 WXSS 本地图片限制）、`Icon` 内联 SVG 图标库（30+ 线条图标）、`PropertyCard` 双形态卡片
+- 无重量级图表库：走势图用内联 SVG、柱状图用纯 CSS 实现，控制包体积
 
-- Node.js >= 18
+**后端** `backend/`
+- Express + TypeScript（ESM）+ Zod 参数校验 + Pino 日志
+- 内存数据层：35 个武汉真实小区 × 多户型 ≈ 170 套种子房源、13 区行情趋势（确定性生成）
+- JSON 协议：数据操作一律 `POST` + JSON body，GET 仅用于简单读取
 
-### Initialization
+## 快速启动
 
-**For local development:**
-```bash
-git clone https://cnb.woa.com/cloudstudio/spec-template /tmp/spec-template && \
-/tmp/spec-template/src/init.sh miniprogram && \
-rm -rf /tmp/spec-template
-```
-
-**For CloudStudio environment:**
-```bash
-git clone https://cnb.woa.com/cloudstudio/spec-template /tmp/spec-template && \
-/tmp/spec-template/src/init.sh miniprogram --cloudstudio && \
-rm -rf /tmp/spec-template
-```
-
-The initialization script will:
-1. Copy all template files to your project
-2. Install dependencies for both backend and frontend
-3. Set up the database
-4. Start the services automatically
-
-## Project Structure
-
-```
-/
-├── backend/         # Express.js backend (symlinked to templates/backend)
-│   ├── src/
-│   └── package.json
-├── frontend/        # Taro miniprogram frontend
-│   ├── src/
-│   │   ├── pages/
-│   │   │   └── index/     # Home page
-│   │   ├── components/
-│   │   ├── services/
-│   │   ├── utils/
-│   │   └── app.tsx
-│   ├── config/
-│   └── package.json
-└── docs/            # Documentation and design files
-```
-
-## Development
-
-### Backend
+要求：Node.js ≥ 18，推荐 pnpm（npm 亦可）。
 
 ```bash
-cd backend
-npm run dev              # Start development server
-npm run test             # Run tests
+# 克隆
+git clone https://github.com/yeshi99/miniprogram.git
+cd miniprogram
+
+# 后端（端口 3000）
+pnpm --prefix backend install
+cp backend/.env.example backend/.env
+pnpm --prefix backend dev
+
+# 前端 H5 预览（端口 5173，已配置 /api 代理到 3000）
+pnpm --prefix frontend install
+pnpm --prefix frontend dev:h5
+# 打开 http://localhost:5173
+
+# 微信小程序端
+pnpm --prefix frontend dev:weapp
+# 用微信开发者工具导入 frontend/ 目录即可预览
 ```
 
-### Frontend
+## API 摘要
 
-**WeChat MiniProgram:**
-```bash
-cd frontend
-npm run dev:weapp        # Start WeChat development
-npm run build:weapp      # Build for production
+完整协议见 `docs/product/features.md`。
+
+| 方法 | 路径 | 说明 |
+| --- | --- | --- |
+| GET | `/api/health` | 健康检查 |
+| POST | `/api/properties/list` | 房源列表（分页 + 筛选 + 排序） |
+| POST | `/api/properties/search` | 关键词搜索 + 联想 |
+| GET | `/api/properties/:id` | 房源详情（含租售对比） |
+| POST | `/api/properties` | 发布房源 |
+| POST | `/api/properties/similar` | 相似房源 |
+| POST | `/api/favorites/toggle` · `/list` · `/status` | 收藏管理 |
+| POST | `/api/market/overview` · `/districts` · `/district` | 区域行情 |
+| POST | `/api/market/mortgage` | 房贷计算 |
+| POST | `/api/user/*` | 我的发布 / 浏览历史 / 需求登记 |
+
+用户身份通过请求头 `x-user-id` 标识（默认 `guest`）。
+
+## 项目结构
+
+```
+├── backend/
+│   └── src/
+│       ├── app.ts              # Express 入口与路由挂载
+│       ├── modules/            # properties / favorites / market / user
+│       ├── services/           # 房源筛选排序、行情统计
+│       ├── data/               # 小区/区域种子数据、内存存储
+│       ├── types/              # Zod schemas
+│       └── middleware/         # 校验 / 错误处理 / 日志
+├── frontend/
+│   ├── config/                 # Taro 构建配置（H5 代理等）
+│   └── src/
+│       ├── pages/              # 12 个页面（index/list/detail/market/...）
+│       ├── components/         # PropertyCard / PropertyCover / Icon
+│       ├── services/           # api-client 与接口封装
+│       ├── styles/theme.scss   # 设计令牌
+│       └── types/              # 前端类型
+└── docs/                       # 产品文档、截图、海报
 ```
 
-**Other Platforms:**
-```bash
-npm run dev:alipay       # Alipay MiniProgram
-npm run dev:tt           # ByteDance MiniProgram
-npm run dev:h5           # H5 (Browser)
-```
+## 说明与限制
 
-## TabBar Navigation
+- 数据存于**内存**，服务重启后用户发布/收藏会重置；生产环境建议替换为数据库（接口层已隔离在 service）
+- 电话联系为复制号码/弹窗演示，未接真实拨号与 IM
+- 房源价格、行情数据为演示用种子数据，非真实成交数据
 
-**Required: 3-5 bottom tabs for complete user experience**
+## License
 
-Generate tab icons using available skills/tools:
-- Request simple, recognizable designs: home, grid, cart, user, heart, etc.
-- Format: PNG/JPG/JPEG only (SVG not supported)
-- Create normal state (gray) and selected state (colored) versions  
-- Export as 81x81px PNG files
-- Use Chinese labels (2-4 characters)
-
-Common patterns:
-- **E-commerce**: 首页, 分类, 购物车, 订单, 我的
-- **Social**: 首页, 发现, 发布, 消息, 我的
-
-Configure in `frontend/src/app.config.ts` tabBar section.
-
-## Important Notes
-
-**Project Configuration:**
-- **`.cloudstudio` is a FILE, not a directory** - Common mistake to avoid
-- This TOML file configures service startup
-- Located at project root
-- Do NOT create `.cloudstudio/` folder
-
-**Avoid Node.js APIs in Taro:**
-- ❌ Don't use `process.env` (causes "process is not defined" error)
-- ✅ Use `/api` proxy or define constants in `config/index.ts`
-- ✅ Use Taro APIs: `Taro.request()`, `Taro.setStorageSync()`, etc.
-
-## API Integration
-
-The frontend includes a ready-to-use API client that:
-- Automatically adds auth tokens to requests
-- Handles authentication errors (401)
-- Provides type-safe request/response interfaces
-- Uses JSON-based protocol for all data operations
-
-Example usage:
-```typescript
-import apiClient from '@/services/api-client';
-
-// List users with filters
-const users = await apiClient.post('/users/list', {
-  page: 1,
-  limit: 10,
-  filters: { active: true }
-});
-```
-
-## Tech Stack
-
-### Frontend
-- **Taro 4.x** - Cross-platform miniprogram framework
-- **Taro UI** - Multi-platform UI component library
-- **React 18** - UI library
-- **TypeScript** - Type safety
-- **Sass** - CSS preprocessor
-- **Taro Components** - Platform-agnostic components
-
-### Backend
-- **Express.js** - Web framework
-- **TCB managed PostgreSQL** - Database (via CloudBase JS SDK)
-- **Zod** - Schema validation
-- **Pino** - Logging
-- **Jest** - Testing
-
-## Platform Support
-
-This miniprogram can run on:
-- WeChat MiniProgram (微信小程序)
-- Alipay MiniProgram (支付宝小程序)
-- ByteDance MiniProgram (抖音小程序)
-- Baidu Smart Program (百度智能小程序)
-- QQ MiniProgram (QQ小程序)
-- JD MiniProgram (京东小程序)
-- H5 (Mobile Web)
-
-## Learn More
-
-- [Taro Documentation](https://taro-docs.jd.com/)
-- [Frontend README](./frontend/README.md) - Detailed frontend documentation
-- [Backend README](./backend/README.md) - Detailed backend documentation
-- [CODEBUDDY.md](./CODEBUDDY.md) - AI development guidelines
+MIT
