@@ -1,0 +1,28 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# build output
+frontend/dist/
+weapp/
+backend/dist/
+
+# env
+.env
+.env.local
+*.pem
+
+# logs
+*.log
+npm-debug.log*
+
+# editor / os
+.DS_Store
+.idea/
+.vscode/
+
+# runtime / tooling (session-specific)
+.genie/
+.cloudstudio/
+.codebuddy/
+.templates/

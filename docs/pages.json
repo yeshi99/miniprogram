@@ -1,0 +1,62 @@
+[
+  {
+    "pageKey": "index",
+    "title": "首页",
+    "url": "/"
+  },
+  {
+    "pageKey": "calculator",
+    "title": "武汉租售",
+    "url": "/calculator"
+  },
+  {
+    "pageKey": "demand",
+    "title": "武汉租售",
+    "url": "/demand"
+  },
+  {
+    "pageKey": "detail",
+    "title": "武汉租售",
+    "url": "/detail"
+  },
+  {
+    "pageKey": "district",
+    "title": "武汉租售",
+    "url": "/district"
+  },
+  {
+    "pageKey": "favorites",
+    "title": "武汉租售",
+    "url": "/favorites"
+  },
+  {
+    "pageKey": "list",
+    "title": "找房",
+    "url": "/list"
+  },
+  {
+    "pageKey": "market",
+    "title": "行情",
+    "url": "/market"
+  },
+  {
+    "pageKey": "mine",
+    "title": "我的",
+    "url": "/mine"
+  },
+  {
+    "pageKey": "my-listings",
+    "title": "武汉租售",
+    "url": "/my-listings"
+  },
+  {
+    "pageKey": "publish",
+    "title": "武汉租售",
+    "url": "/publish"
+  },
+  {
+    "pageKey": "search",
+    "title": "武汉租售",
+    "url": "/search"
+  }
+]

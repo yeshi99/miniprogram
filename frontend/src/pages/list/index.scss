@@ -1,0 +1,415 @@
+@import '../../styles/theme.scss';
+
+.list-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: $bg-page;
+  position: relative;
+}
+
+/* 顶部 */
+.list-top {
+  display: flex;
+  align-items: center;
+  padding: 20px $gap-lg;
+  background: $bg-card;
+
+  &__types {
+    display: flex;
+    background: $bg-subtle;
+    border-radius: $radius-pill;
+    padding: 4px;
+  }
+
+  &__type {
+    padding: 10px 28px;
+    border-radius: $radius-pill;
+    transition: all 0.2s ease;
+
+    &.is-active {
+      @include gradient-primary;
+    }
+
+    &.is-active .list-top__type-text {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    &-text {
+      font-size: 26px;
+      color: $text-secondary;
+    }
+  }
+
+  &__search {
+    flex: 1;
+    margin-left: 18px;
+    height: 68px;
+    background: $bg-subtle;
+    border-radius: $radius-pill;
+    display: flex;
+    align-items: center;
+    padding: 0 22px;
+
+    &-text {
+      margin-left: 10px;
+      font-size: 24px;
+      color: $text-hint;
+    }
+  }
+}
+
+/* 筛选栏 */
+.filterbar {
+  display: flex;
+  background: $bg-card;
+  padding: 0 $gap-lg 18px;
+  border-bottom: 1px solid $border-color;
+
+  &__item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    height: 64px;
+
+    &.is-active .filterbar__text {
+      color: $primary;
+      font-weight: 600;
+    }
+
+    &.is-open .filterbar__text {
+      color: $primary;
+    }
+  }
+
+  &__text {
+    font-size: 25px;
+    color: $text-secondary;
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+/* 结果栏 */
+.result-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px $gap-lg 10px;
+
+  &__count {
+    font-size: 23px;
+    color: $text-muted;
+  }
+
+  &__num {
+    color: $primary;
+    font-weight: 700;
+    font-size: 26px;
+  }
+
+  &__hint {
+    font-size: 21px;
+    color: $text-hint;
+  }
+}
+
+/* 列表 */
+.list-scroll {
+  flex: 1;
+  height: 0;
+}
+
+.list-content {
+  padding: 10px $gap-lg 40px;
+}
+
+.load-more {
+  text-align: center;
+  padding: 24px 0;
+
+  &__text {
+    font-size: 22px;
+    color: $text-hint;
+  }
+}
+
+/* 空态 */
+.empty {
+  padding: 140px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__circle {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: $primary-softer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__title {
+    margin-top: 28px;
+    font-size: 30px;
+    color: $text-secondary;
+    font-weight: 600;
+  }
+
+  &__desc {
+    margin-top: 10px;
+    font-size: 24px;
+    color: $text-hint;
+  }
+}
+
+/* 遮罩 */
+.mask {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(20, 35, 31, 0.36);
+  z-index: 90;
+  animation: maskIn 0.2s ease;
+}
+
+@keyframes maskIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 面板 */
+.panel {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin-top: 232px;
+  background: $bg-card;
+  border-radius: 0 0 $radius-lg $radius-lg;
+  z-index: 95;
+  box-shadow: $shadow-float;
+  animation: panelIn 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+  max-height: 70vh;
+  overflow: hidden;
+
+  &--sort {
+    margin-top: 232px;
+    padding: 12px 0;
+    max-height: none;
+  }
+
+  &__sort-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 26px $gap-lg;
+
+    &.is-active .panel__sort-text {
+      color: $primary;
+      font-weight: 600;
+    }
+  }
+
+  &__sort-text {
+    font-size: 27px;
+    color: $text-secondary;
+  }
+
+  &__scroll {
+    max-height: 62vh;
+  }
+
+  &__body {
+    padding: 28px $gap-lg 0;
+  }
+
+  &__label {
+    display: block;
+    font-size: 26px;
+    font-weight: 600;
+    color: $text-primary;
+    margin: 28px 0 18px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 20px;
+    padding: 32px 0 calc(32px + env(safe-area-inset-bottom));
+    margin-top: 12px;
+    position: sticky;
+    bottom: 0;
+    background: $bg-card;
+  }
+
+  &__btn {
+    flex: 1;
+    height: 88px;
+    border-radius: $radius-pill;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--ghost {
+      background: $bg-subtle;
+      border: 1px solid $border-strong;
+    }
+
+    &--primary {
+      @include gradient-primary;
+      flex: 2;
+    }
+
+    &-text {
+      font-size: 27px;
+      color: $text-secondary;
+      font-weight: 600;
+
+      &--light {
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+@keyframes panelIn {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 选项 */
+.chip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.chip {
+  height: 76px;
+  border-radius: $radius-md;
+  background: $bg-subtle;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.18s ease;
+
+  &.is-active {
+    background: $primary-soft;
+    border-color: $primary;
+  }
+
+  &.is-active .chip__text {
+    color: $primary;
+    font-weight: 600;
+  }
+
+  &__text {
+    font-size: 24px;
+    color: $text-secondary;
+  }
+}
+
+/* 区域选择 */
+.district-picker {
+  display: flex;
+  height: 900px;
+  max-height: 62vh;
+
+  &__left {
+    width: 220px;
+    height: 100%;
+    background: $bg-subtle;
+  }
+
+  &__left-inner {
+    padding: 8px 0;
+  }
+
+  &__tab {
+    padding: 26px 20px;
+    position: relative;
+
+    &.is-active {
+      background: $bg-card;
+    }
+
+    &.is-active::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 34px;
+      background: $primary;
+      border-radius: 0 4px 4px 0;
+    }
+
+    &.is-active .district-picker__tab-text {
+      color: $primary;
+      font-weight: 600;
+    }
+
+    &-text {
+      font-size: 25px;
+      color: $text-secondary;
+    }
+  }
+
+  &__right {
+    flex: 1;
+    height: 100%;
+  }
+
+  &__right-inner {
+    padding: 8px 0 40px;
+  }
+
+  &__option {
+    padding: 26px 24px;
+    border-bottom: 1px solid $border-color;
+
+    &.is-active .district-picker__option-text {
+      color: $primary;
+      font-weight: 600;
+    }
+
+    &-text {
+      font-size: 25px;
+      color: $text-secondary;
+    }
+  }
+
+  &__tip {
+    padding: 40px 24px;
+  }
+
+  &__tip-text {
+    font-size: 23px;
+    color: $text-hint;
+  }
+}

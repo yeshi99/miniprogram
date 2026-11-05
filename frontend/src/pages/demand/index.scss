@@ -1,0 +1,276 @@
+@import '../../styles/theme.scss';
+
+.demand {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: $bg-page;
+
+  &__tabs {
+    display: flex;
+    background: $bg-card;
+    padding: 0 $gap-lg;
+  }
+
+  &__tab {
+    position: relative;
+    flex: 1;
+    height: 96px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.is-active .demand__tab-text {
+      color: $primary;
+      font-weight: 700;
+    }
+
+    &.is-active::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 56px;
+      height: 6px;
+      border-radius: 3px;
+      background: $primary;
+    }
+
+    &-text {
+      font-size: 28px;
+      color: $text-secondary;
+    }
+  }
+
+  &__scroll {
+    flex: 1;
+    height: 0;
+  }
+
+  &__content {
+    padding: 24px $gap-lg 60px;
+  }
+}
+
+.intro {
+  display: flex;
+  align-items: center;
+  padding: 26px;
+  background: $primary-softer;
+  border-radius: $radius-lg;
+  border: 1px solid rgba(15, 118, 110, 0.12);
+  margin-bottom: 20px;
+
+  &__icon {
+    width: 84px;
+    height: 84px;
+    border-radius: 26px;
+    background: $bg-card;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__body {
+    flex: 1;
+    margin-left: 20px;
+  }
+
+  &__title {
+    display: block;
+    font-size: 29px;
+    font-weight: 700;
+    color: $primary;
+  }
+
+  &__desc {
+    display: block;
+    margin-top: 4px;
+    font-size: 21px;
+    color: $text-muted;
+    line-height: 1.6;
+  }
+}
+
+.card {
+  background: $bg-card;
+  border-radius: $radius-lg;
+  padding: 28px;
+  margin-bottom: 20px;
+  box-shadow: $shadow-card;
+
+  &__title {
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+    color: $text-primary;
+    margin-bottom: 20px;
+  }
+}
+
+.seg {
+  display: flex;
+  background: $bg-subtle;
+  border-radius: $radius-md;
+  padding: 5px;
+
+  &__item {
+    flex: 1;
+    height: 80px;
+    border-radius: $radius-sm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.is-active {
+      background: $bg-card;
+      box-shadow: 0 2px 8px rgba(18, 62, 54, 0.08);
+    }
+
+    &.is-active .seg__text {
+      color: $primary;
+      font-weight: 700;
+    }
+  }
+
+  &__text {
+    font-size: 26px;
+    color: $text-secondary;
+  }
+}
+
+.selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  &__chip {
+    padding: 14px 24px;
+    background: $bg-subtle;
+    border-radius: $radius-sm;
+    border: 1px solid transparent;
+
+    &.is-active {
+      background: $primary-soft;
+      border-color: $primary;
+    }
+
+    &.is-active .selector__chip-text {
+      color: $primary;
+      font-weight: 600;
+    }
+
+    &-text {
+      font-size: 23px;
+      color: $text-secondary;
+    }
+  }
+}
+
+.field {
+  margin-bottom: 22px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__label {
+    display: block;
+    font-size: 23px;
+    color: $text-muted;
+    margin-bottom: 10px;
+  }
+
+  &__input {
+    width: 100%;
+    height: 84px;
+    background: $bg-subtle;
+    border-radius: $radius-sm;
+    padding: 0 20px;
+    font-size: 26px;
+    color: $text-primary;
+  }
+
+  &__textarea {
+    width: 100%;
+    height: 170px;
+    background: $bg-subtle;
+    border-radius: $radius-sm;
+    padding: 20px;
+    font-size: 25px;
+    color: $text-primary;
+    line-height: 1.6;
+  }
+
+  &__placeholder {
+    color: $text-hint;
+    font-size: 24px;
+  }
+}
+
+.submit {
+  height: 96px;
+  border-radius: $radius-pill;
+  @include gradient-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(15, 118, 110, 0.24);
+
+  &.is-disabled {
+    opacity: 0.6;
+  }
+
+  &__text {
+    font-size: 30px;
+    color: #ffffff;
+    font-weight: 600;
+  }
+}
+
+.myempty {
+  padding: 120px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__circle {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: $primary-softer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__title {
+    margin-top: 26px;
+    font-size: 30px;
+    font-weight: 600;
+    color: $text-secondary;
+  }
+
+  &__desc {
+    margin-top: 12px;
+    font-size: 23px;
+    color: $text-hint;
+    text-align: center;
+    line-height: 1.7;
+  }
+
+  &__btn {
+    margin-top: 36px;
+    padding: 20px 60px;
+    border-radius: $radius-pill;
+    @include gradient-primary;
+  }
+
+  &__btn-text {
+    font-size: 26px;
+    color: #ffffff;
+    font-weight: 600;
+  }
+}

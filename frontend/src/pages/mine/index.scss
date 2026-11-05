@@ -1,0 +1,262 @@
+@import '../../styles/theme.scss';
+
+.mine {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: $bg-page;
+
+  &__header {
+    @include gradient-hero;
+    padding: 36px $gap-lg 40px;
+    border-radius: 0 0 40px 40px;
+  }
+
+  &__scroll {
+    flex: 1;
+    height: 0;
+    margin-top: -24px;
+  }
+
+  &__content {
+    padding: 0 $gap-lg 40px;
+  }
+
+  &__footer {
+    padding: 40px 0 20px;
+    text-align: center;
+
+    &-text {
+      display: block;
+      font-size: 22px;
+      color: $text-hint;
+    }
+
+    &-sub {
+      display: block;
+      font-size: 20px;
+      color: $text-hint;
+      margin-top: 6px;
+    }
+  }
+}
+
+/* 个人资料 */
+.profile {
+  display: flex;
+  align-items: center;
+
+  &__avatar {
+    width: 116px;
+    height: 116px;
+    border-radius: 36px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.32);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    &-text {
+      font-size: 50px;
+      font-weight: 700;
+      color: #ffffff;
+      font-family: 'Songti SC', serif;
+    }
+  }
+
+  &__body {
+    flex: 1;
+    margin-left: 24px;
+  }
+
+  &__name {
+    display: block;
+    font-size: 36px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  &__level {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 10px;
+    padding: 4px 14px;
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: $radius-pill;
+  }
+
+  &__level-text {
+    font-size: 20px;
+    color: #ffffff;
+  }
+
+  &__city {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.16);
+    border-radius: $radius-pill;
+
+    &-text {
+      font-size: 22px;
+      color: #ffffff;
+    }
+  }
+}
+
+/* 统计 */
+.stats {
+  display: flex;
+  align-items: center;
+  margin-top: 32px;
+  padding: 24px 0;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: $radius-lg;
+
+  &__item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__num {
+    font-size: 38px;
+    font-weight: 700;
+    color: #ffffff;
+    font-family: 'DIN Alternate', sans-serif;
+  }
+
+  &__label {
+    font-size: 21px;
+    color: rgba(255, 255, 255, 0.78);
+    margin-top: 2px;
+  }
+
+  &__divider {
+    width: 1px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* CTA */
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: $bg-card;
+  border-radius: $radius-lg;
+  padding: 28px;
+  box-shadow: $shadow-card;
+  border-left: 8px solid $primary;
+
+  &__title {
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+    color: $text-primary;
+  }
+
+  &__desc {
+    display: block;
+    font-size: 21px;
+    color: $text-muted;
+    margin-top: 6px;
+  }
+
+  &__btn {
+    padding: 16px 28px;
+    border-radius: $radius-pill;
+    @include gradient-primary;
+    flex-shrink: 0;
+  }
+
+  &__btn-text {
+    font-size: 24px;
+    color: #ffffff;
+    font-weight: 600;
+  }
+}
+
+/* 菜单 */
+.menu {
+  margin-top: 32px;
+
+  &__title {
+    display: block;
+    font-size: 24px;
+    color: $text-muted;
+    margin-bottom: 12px;
+    padding-left: 6px;
+  }
+
+  &__card {
+    background: $bg-card;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-card;
+    overflow: hidden;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    padding: 24px 24px;
+    border-bottom: 1px solid $border-color;
+
+    &.is-last {
+      border-bottom: none;
+    }
+  }
+
+  &__icon {
+    width: 68px;
+    height: 68px;
+    border-radius: 20px;
+    background: $primary-soft;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__body {
+    flex: 1;
+    margin-left: 18px;
+  }
+
+  &__label {
+    display: block;
+    font-size: 27px;
+    color: $text-primary;
+    font-weight: 500;
+  }
+
+  &__desc {
+    display: block;
+    font-size: 21px;
+    color: $text-hint;
+    margin-top: 2px;
+  }
+
+  &__badge {
+    min-width: 38px;
+    height: 38px;
+    padding: 0 10px;
+    border-radius: $radius-pill;
+    background: $accent-soft;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+
+    &-text {
+      font-size: 20px;
+      color: $accent-strong;
+      font-weight: 600;
+    }
+  }
+}

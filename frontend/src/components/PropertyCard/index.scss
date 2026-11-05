@@ -1,0 +1,221 @@
+@import '../../styles/theme.scss';
+
+/* ---------- 列表样式卡片 ---------- */
+.pcard {
+  background: $bg-card;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-card;
+  margin-bottom: $gap-md;
+
+  &__media {
+    position: relative;
+  }
+
+  &__tags {
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__tag {
+    padding: 4px 14px;
+    background: rgba(15, 118, 110, 0.9);
+    border-radius: $radius-pill;
+
+    &-text {
+      font-size: 20px;
+      color: #fff;
+      line-height: 1.4;
+    }
+  }
+
+  &__body {
+    padding: 20px 24px 22px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 600;
+    color: $text-primary;
+    line-height: 1.42;
+    letter-spacing: -0.2px;
+  }
+
+  &__spec {
+    display: block;
+    margin-top: 8px;
+    font-size: 24px;
+    color: $text-secondary;
+  }
+
+  &__location {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 6px;
+  }
+
+  &__location-text {
+    flex: 1;
+    font-size: 23px;
+    color: $text-muted;
+    margin-right: 12px;
+  }
+
+  &__distance {
+    flex-shrink: 0;
+    font-size: 21px;
+    color: $primary;
+    background: $primary-soft;
+    padding: 2px 12px;
+    border-radius: 8px;
+  }
+
+  &__foot {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid $border-color;
+  }
+
+  &__price {
+    display: flex;
+    align-items: baseline;
+  }
+
+  &__price-num {
+    font-size: 42px;
+    color: $accent-strong;
+    line-height: 1;
+  }
+
+  &__price-unit {
+    font-size: 22px;
+    color: $accent-strong;
+    margin-left: 4px;
+  }
+
+  &__unit-price {
+    font-size: 21px;
+    color: $text-hint;
+    margin-left: 12px;
+  }
+
+  &__foot-right {
+    display: flex;
+    align-items: center;
+  }
+
+  &__date {
+    font-size: 21px;
+    color: $text-hint;
+  }
+
+  &__fav {
+    margin-left: 16px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-icon {
+      width: 34px;
+      height: 34px;
+    }
+
+    &.is-on {
+      animation: pop 0.28s ease;
+    }
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.7);
+  }
+  60% {
+    transform: scale(1.16);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ---------- 网格样式卡片 ---------- */
+.pcard-grid {
+  background: $bg-card;
+  border-radius: $radius-md;
+  overflow: hidden;
+  box-shadow: $shadow-card;
+
+  &__media {
+    position: relative;
+  }
+
+  &__badge {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    padding: 3px 12px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: $radius-pill;
+
+    &-text {
+      font-size: 19px;
+      color: $primary;
+      font-weight: 500;
+    }
+  }
+
+  &__body {
+    padding: 14px 16px 16px;
+  }
+
+  &__title {
+    display: block;
+    font-size: 26px;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  &__meta {
+    display: block;
+    margin-top: 4px;
+    font-size: 21px;
+    color: $text-muted;
+  }
+
+  &__foot {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+  &__price {
+    display: flex;
+    align-items: baseline;
+  }
+
+  &__price-num {
+    font-size: 32px;
+    color: $accent-strong;
+  }
+
+  &__price-unit {
+    font-size: 19px;
+    color: $accent-strong;
+    margin-left: 2px;
+  }
+
+  &__station {
+    font-size: 19px;
+    color: $text-hint;
+  }
+}

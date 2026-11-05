@@ -1,0 +1,130 @@
+@import './styles/theme.scss';
+
+page {
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', sans-serif;
+  font-size: 28px;
+  line-height: 1.55;
+  color: $text-primary;
+  background-color: $bg-page;
+  -webkit-font-smoothing: antialiased;
+}
+
+view, text, image, scroll-view, swiper, button, input, textarea {
+  box-sizing: border-box;
+}
+
+button::after {
+  border: none;
+}
+
+/* 通用容器 */
+.page {
+  min-height: 100vh;
+  background-color: $bg-page;
+  padding-bottom: 40px;
+}
+
+.page--with-bar {
+  padding-bottom: 160px;
+}
+
+.container {
+  padding: 0 $gap-lg;
+}
+
+/* 卡片 */
+.card {
+  background: $bg-card;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-card;
+}
+
+/* 文本工具 */
+.text-muted {
+  color: $text-muted;
+}
+
+.text-hint {
+  color: $text-hint;
+}
+
+.text-primary-color {
+  color: $primary;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ellipsis-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+/* 价格 */
+.price {
+  color: $accent-strong;
+  font-weight: 700;
+}
+
+.price-num {
+  font-family: 'DIN Alternate', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* 分割线 */
+.divider {
+  height: 1px;
+  background: $border-color;
+}
+
+/* 安全区 */
+.safe-bottom {
+  height: env(safe-area-inset-bottom);
+}
+
+/* 交互态 */
+.tap {
+  transition: opacity 0.18s ease;
+  &:active {
+    opacity: 0.72;
+  }
+}
+
+/* 骨架屏 */
+.skeleton {
+  background: linear-gradient(90deg, #eef2f5 25%, #f6f8fa 37%, #eef2f5 63%);
+  background-size: 400% 100%;
+  animation: skeleton-loading 1.4s ease infinite;
+  border-radius: 12px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+/* 淡入 */
+.fade-in {
+  animation: fadeIn 0.28s ease both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

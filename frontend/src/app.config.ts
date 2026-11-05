@@ -1,0 +1,59 @@
+export default defineAppConfig({
+  pages: [
+    'pages/index/index',
+    'pages/list/index',
+    'pages/market/index',
+    'pages/mine/index',
+    'pages/detail/index',
+    'pages/search/index',
+    'pages/favorites/index',
+    'pages/my-listings/index',
+    'pages/publish/index',
+    'pages/calculator/index',
+    'pages/district/index',
+    'pages/demand/index'
+  ],
+  window: {
+    backgroundTextStyle: 'light',
+    navigationBarBackgroundColor: '#0F766E',
+    navigationBarTitleText: '武汉租售',
+    navigationBarTextStyle: 'white',
+    backgroundColor: '#F4F7F6'
+  },
+  tabBar: {
+    color: '#94A3B8',
+    selectedColor: '#0F766E',
+    backgroundColor: '#FFFFFF',
+    borderStyle: 'white',
+    list: [
+      {
+        pagePath: 'pages/index/index',
+        text: '首页',
+        iconPath: 'assets/tabbar/home.png',
+        selectedIconPath: 'assets/tabbar/home-active.png'
+      },
+      {
+        pagePath: 'pages/list/index',
+        text: '找房',
+        iconPath: 'assets/tabbar/search.png',
+        selectedIconPath: 'assets/tabbar/search-active.png'
+      },
+      {
+        pagePath: 'pages/market/index',
+        text: '行情',
+        iconPath: 'assets/tabbar/list.png',
+        selectedIconPath: 'assets/tabbar/list-active.png'
+      },
+      {
+        pagePath: 'pages/mine/index',
+        text: '我的',
+        iconPath: 'assets/tabbar/user.png',
+        selectedIconPath: 'assets/tabbar/user-active.png'
+      }
+    ]
+  }
+})
+
+function defineAppConfig(config: any) {
+  return config
+}

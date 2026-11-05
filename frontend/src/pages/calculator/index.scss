@@ -1,0 +1,391 @@
+@import '../../styles/theme.scss';
+
+.calc {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: $bg-page;
+
+  &__scroll {
+    flex: 1;
+    height: 0;
+  }
+
+  &__content {
+    padding: 24px $gap-lg 40px;
+  }
+
+  &__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: $bg-card;
+    padding: 16px $gap-lg calc(16px + env(safe-area-inset-bottom));
+    box-shadow: 0 -4px 24px rgba(18, 62, 54, 0.08);
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-label {
+      font-size: 20px;
+      color: $text-hint;
+    }
+
+    &-value {
+      font-size: 32px;
+      font-weight: 700;
+      color: $accent-strong;
+      font-family: 'DIN Alternate', sans-serif;
+    }
+
+    &-btn {
+      padding: 0 56px;
+      height: 84px;
+      border-radius: $radius-pill;
+      @include gradient-primary;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &-btn-text {
+      font-size: 27px;
+      color: #ffffff;
+      font-weight: 600;
+    }
+  }
+}
+
+/* 结果 */
+.result {
+  @include gradient-hero;
+  border-radius: $radius-lg;
+  padding: 36px 28px 28px;
+  box-shadow: 0 12px 32px rgba(11, 91, 85, 0.22);
+
+  &__label {
+    display: block;
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  &__value-row {
+    display: flex;
+    align-items: baseline;
+    margin-top: 8px;
+  }
+
+  &__currency {
+    font-size: 32px;
+    color: #ffffff;
+    font-weight: 600;
+    margin-right: 4px;
+  }
+
+  &__value {
+    font-size: 82px;
+    font-weight: 700;
+    color: #ffffff;
+    font-family: 'DIN Alternate', 'Helvetica Neue', sans-serif;
+    letter-spacing: -2px;
+    line-height: 1.05;
+  }
+
+  &__split {
+    display: flex;
+    align-items: center;
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+
+    &-item {
+      flex: 1;
+    }
+
+    &-label {
+      display: block;
+      font-size: 20px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    &-value {
+      display: block;
+      margin-top: 4px;
+      font-size: 28px;
+      font-weight: 700;
+      color: #ffffff;
+      font-family: 'DIN Alternate', sans-serif;
+    }
+
+    &-divider {
+      width: 1px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
+}
+
+/* 卡片 */
+.card {
+  background: $bg-card;
+  border-radius: $radius-lg;
+  padding: 28px;
+  margin-top: 20px;
+  box-shadow: $shadow-card;
+
+  &__title {
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+    color: $text-primary;
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  &__value-box {
+    display: flex;
+    align-items: baseline;
+  }
+
+  &__value-input {
+    width: 130px;
+    height: 60px;
+    background: $bg-subtle;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    color: $primary;
+    font-family: 'DIN Alternate', sans-serif;
+  }
+
+  &__value-num {
+    font-size: 40px;
+    font-weight: 700;
+    color: $primary;
+    font-family: 'DIN Alternate', sans-serif;
+  }
+
+  &__value-unit {
+    font-size: 22px;
+    color: $text-muted;
+    margin-left: 6px;
+  }
+
+  &__hint {
+    display: block;
+    font-size: 21px;
+    color: $text-hint;
+    margin-top: 16px;
+    line-height: 1.6;
+  }
+}
+
+.seg {
+  display: flex;
+  background: $bg-subtle;
+  border-radius: $radius-md;
+  padding: 5px;
+
+  &__item {
+    flex: 1;
+    height: 76px;
+    border-radius: $radius-sm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.is-active {
+      background: $bg-card;
+      box-shadow: 0 2px 8px rgba(18, 62, 54, 0.08);
+    }
+
+    &.is-active .seg__text {
+      color: $primary;
+      font-weight: 700;
+    }
+  }
+
+  &__text {
+    font-size: 26px;
+    color: $text-secondary;
+  }
+}
+
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+
+  &__text {
+    font-size: 20px;
+    color: $text-hint;
+  }
+}
+
+.chip-row {
+  display: flex;
+  gap: 14px;
+}
+
+.chip {
+  flex: 1;
+  height: 76px;
+  border-radius: $radius-sm;
+  background: $bg-subtle;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.is-active {
+    background: $primary-soft;
+    border-color: $primary;
+  }
+
+  &.is-active .chip__text {
+    color: $primary;
+    font-weight: 700;
+  }
+
+  &__text {
+    font-size: 24px;
+    color: $text-secondary;
+  }
+}
+
+/* 贷款类型 */
+.loantypes {
+  margin-top: 18px;
+}
+
+.loantype {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: $radius-md;
+  border: 1px solid $border-color;
+  margin-bottom: 12px;
+
+  &.is-active {
+    border-color: $primary;
+    background: $primary-softer;
+  }
+
+  &__body {
+    flex: 1;
+  }
+
+  &__label {
+    display: block;
+    font-size: 26px;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  &__desc {
+    display: block;
+    font-size: 20px;
+    color: $text-hint;
+    margin-top: 2px;
+  }
+
+  &__radio {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid $border-strong;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.is-active {
+      background: $primary;
+      border-color: $primary;
+    }
+  }
+}
+
+.rate-row {
+  margin-top: 16px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: $bg-subtle;
+    border-radius: $radius-sm;
+    padding: 14px 20px;
+  }
+
+  &__label {
+    font-size: 23px;
+    color: $text-secondary;
+  }
+
+  &__input {
+    width: 140px;
+    height: 56px;
+    text-align: right;
+    font-size: 28px;
+    font-weight: 600;
+    color: $primary;
+  }
+}
+
+/* 明细 */
+.detail {
+  margin-top: 8px;
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0;
+  }
+
+  &__label {
+    font-size: 24px;
+    color: $text-muted;
+
+    &--strong {
+      color: $text-primary;
+      font-weight: 600;
+    }
+  }
+
+  &__value {
+    font-size: 25px;
+    color: $text-primary;
+
+    &--price {
+      color: $accent-strong;
+      font-weight: 700;
+      font-size: 28px;
+    }
+  }
+
+  &__divider {
+    height: 1px;
+    background: $border-color;
+    margin: 8px 0;
+  }
+}
+
+.disclaimer {
+  margin-top: 24px;
+  padding: 0 8px;
+
+  &__text {
+    font-size: 20px;
+    color: $text-hint;
+    line-height: 1.7;
+  }
+}

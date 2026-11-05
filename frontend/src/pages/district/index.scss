@@ -1,0 +1,328 @@
+@import '../../styles/theme.scss';
+
+.district-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: $bg-page;
+
+  &__scroll {
+    flex: 1;
+    height: 0;
+    margin-top: -20px;
+  }
+
+  &__content {
+    padding: 0 $gap-lg 40px;
+  }
+
+  &__empty {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-text {
+      font-size: 28px;
+      color: $text-muted;
+    }
+  }
+
+  &__footer {
+    padding: 30px 0 10px;
+    text-align: center;
+
+    &-text {
+      font-size: 20px;
+      color: $text-hint;
+    }
+  }
+}
+
+.dhead {
+  @include gradient-hero;
+  padding: 28px $gap-lg 48px;
+  border-radius: 0 0 40px 40px;
+
+  &__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  &__name {
+    display: block;
+    font-size: 44px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 1px;
+  }
+
+  &__sub {
+    display: block;
+    font-size: 21px;
+    color: rgba(255, 255, 255, 0.72);
+    margin-top: 6px;
+  }
+
+  &__change {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 18px;
+    border-radius: $radius-pill;
+    background: rgba(255, 255, 255, 0.16);
+
+    &-text {
+      font-size: 23px;
+      color: #ffffff;
+      font-weight: 600;
+    }
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: $radius-lg;
+    padding: 24px 0;
+  }
+
+  &__price-item {
+    flex: 1;
+    padding-left: 28px;
+  }
+
+  &__price-label {
+    display: block;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  &__price-row {
+    display: flex;
+    align-items: baseline;
+    margin-top: 4px;
+  }
+
+  &__price-num {
+    font-size: 46px;
+    font-weight: 700;
+    color: #ffffff;
+    font-family: 'DIN Alternate', sans-serif;
+    letter-spacing: -1px;
+  }
+
+  &__price-unit {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-left: 5px;
+  }
+
+  &__divider {
+    width: 1px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* 指标 */
+.metrics {
+  display: flex;
+  background: $bg-card;
+  border-radius: $radius-lg;
+  padding: 26px 0;
+  box-shadow: $shadow-card;
+
+  &__item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 1px solid $border-color;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  &__value {
+    font-size: 32px;
+    font-weight: 700;
+    color: $text-primary;
+    font-family: 'DIN Alternate', sans-serif;
+  }
+
+  &__label {
+    font-size: 19px;
+    color: $text-hint;
+    margin-top: 2px;
+  }
+}
+
+/* 卡片 */
+.card {
+  background: $bg-card;
+  border-radius: $radius-lg;
+  padding: 28px;
+  margin-top: 20px;
+  box-shadow: $shadow-card;
+
+  &--plain {
+    padding: 28px 20px;
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  &__title {
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+    color: $text-primary;
+
+    &--gap {
+      margin-top: 28px;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__sub {
+    font-size: 21px;
+    color: $text-hint;
+  }
+
+  &__more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin-top: 12px;
+    padding: 22px 0;
+    background: $primary-softer;
+    border-radius: $radius-md;
+
+    &-text {
+      font-size: 24px;
+      color: $primary;
+      font-weight: 600;
+    }
+  }
+}
+
+/* 柱状图 */
+.bars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-top: 10px;
+
+  &__col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__value {
+    font-size: 19px;
+    color: $text-muted;
+    margin-bottom: 6px;
+  }
+
+  &__bar-wrap {
+    height: 180px;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__bar {
+    width: 46px;
+    border-radius: 10px 10px 4px 4px;
+    background: linear-gradient(180deg, #a8ded5, #d9efe9);
+
+    &.is-last {
+      background: linear-gradient(180deg, #0f766e, #14b8a6);
+    }
+  }
+
+  &__label {
+    font-size: 19px;
+    color: $text-hint;
+    margin-top: 8px;
+  }
+}
+
+/* 板块 */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 14px 22px;
+    background: $bg-subtle;
+    border-radius: $radius-pill;
+  }
+
+  &__text {
+    font-size: 24px;
+    color: $text-secondary;
+  }
+}
+
+.metro-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 20px;
+    background: $primary-soft;
+    border-radius: $radius-pill;
+  }
+
+  &__text {
+    font-size: 22px;
+    color: $primary;
+  }
+}
+
+/* 分段 */
+.seg {
+  display: flex;
+  background: $bg-subtle;
+  border-radius: $radius-pill;
+  padding: 4px;
+
+  &__item {
+    padding: 8px 24px;
+    border-radius: $radius-pill;
+
+    &.is-active {
+      background: $bg-card;
+      box-shadow: 0 2px 8px rgba(18, 62, 54, 0.08);
+    }
+
+    &.is-active .seg__text {
+      color: $primary;
+      font-weight: 700;
+    }
+  }
+
+  &__text {
+    font-size: 23px;
+    color: $text-secondary;
+  }
+}

@@ -1,0 +1,807 @@
+@import '../../styles/theme.scss';
+
+.detail {
+  min-height: 100vh;
+  background: $bg-page;
+  display: flex;
+  flex-direction: column;
+
+  &--loading {
+    padding-bottom: 40px;
+  }
+
+  &__scroll {
+    flex: 1;
+    height: 0;
+  }
+
+  &__body {
+    padding: 0 $gap-lg;
+    margin-top: -1px;
+  }
+
+  &__footer-note {
+    padding: 32px 8px 40px;
+  }
+
+  &__footer-text {
+    font-size: 20px;
+    color: $text-hint;
+    line-height: 1.6;
+  }
+
+  &__empty {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &-text {
+      font-size: 28px;
+      color: $text-muted;
+    }
+
+    &-btn {
+      margin-top: 32px;
+      padding: 20px 60px;
+      background: $primary;
+      border-radius: $radius-pill;
+    }
+
+    &-btn-text {
+      font-size: 26px;
+      color: #ffffff;
+    }
+  }
+}
+
+/* 图集 */
+.gallery {
+  position: relative;
+
+  &__swiper {
+    height: 560px;
+  }
+
+  &__slide {
+    position: relative;
+    width: 100%;
+    height: 560px;
+  }
+
+  &__type {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    padding: 6px 18px;
+    background: rgba(20, 35, 31, 0.55);
+    border-radius: $radius-pill;
+
+    &-text {
+      font-size: 21px;
+      color: #ffffff;
+    }
+  }
+
+  &__counter {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    padding: 6px 20px;
+    background: rgba(20, 35, 31, 0.5);
+    border-radius: $radius-pill;
+
+    &-text {
+      font-size: 22px;
+      color: #ffffff;
+    }
+  }
+
+  &__back {
+    position: absolute;
+    left: 24px;
+    top: 24px;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: rgba(20, 35, 31, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-icon {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.skeleton-gallery {
+  height: 560px;
+  border-radius: 0;
+}
+
+/* 价格盒 */
+.pricebox {
+  background: $bg-card;
+  border-radius: $radius-lg;
+  padding: 28px;
+  margin-top: 20px;
+  box-shadow: $shadow-card;
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__main {
+    display: flex;
+    align-items: baseline;
+  }
+
+  &__num {
+    font-size: 62px;
+    color: $accent-strong;
+    line-height: 1;
+  }
+
+  &__unit {
+    font-size: 26px;
+    color: $accent-strong;
+    margin-left: 6px;
+    font-weight: 600;
+  }
+
+  &__unit-price {
+    font-size: 22px;
+    color: $text-hint;
+    margin-left: 16px;
+  }
+
+  &__badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 16px;
+    background: $primary-soft;
+    border-radius: $radius-pill;
+  }
+
+  &__badge-text {
+    font-size: 20px;
+    color: $primary;
+  }
+
+  &__title {
+    display: block;
+    margin-top: 16px;
+    font-size: 34px;
+    font-weight: 700;
+    color: $text-primary;
+    line-height: 1.45;
+    letter-spacing: -0.3px;
+  }
+
+  &__specs {
+    display: flex;
+    align-items: center;
+    margin-top: 22px;
+    padding: 20px 0;
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+  }
+
+  &__spec {
+    flex: 1;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+
+    &-num {
+      font-size: 34px;
+      font-weight: 700;
+      color: $text-primary;
+      font-family: 'DIN Alternate', sans-serif;
+    }
+
+    &-num-small {
+      font-size: 25px;
+      font-weight: 600;
+      color: $text-primary;
+    }
+
+    &-label {
+      font-size: 21px;
+      color: $text-muted;
+      margin-left: 2px;
+    }
+
+    &-divider {
+      width: 1px;
+      height: 32px;
+      background: $border-color;
+    }
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+  }
+}
+
+.tag {
+  padding: 6px 16px;
+  background: $bg-subtle;
+  border-radius: 8px;
+
+  &--primary {
+    background: $primary-soft;
+  }
+
+  &__text {
+    font-size: 21px;
+    color: $text-secondary;
+
+    &--primary {
+      color: $primary;
+      font-weight: 500;
+    }
+  }
+}
+
+/* 卡片通用 */
+.card {
+  background: $bg-card;
+  border-radius: $radius-lg;
+  padding: 28px;
+  margin-top: 20px;
+  box-shadow: $shadow-card;
+
+  &__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  &__title {
+    font-size: 30px;
+    font-weight: 700;
+    color: $text-primary;
+  }
+
+  &__sub {
+    font-size: 21px;
+    color: $text-hint;
+  }
+}
+
+/* 费用 */
+.fee__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+}
+
+.fee__label {
+  font-size: 25px;
+  color: $text-secondary;
+}
+
+.fee__value {
+  font-size: 25px;
+  color: $text-primary;
+  font-weight: 600;
+}
+
+/* 对比 */
+.compare {
+  &__row {
+    display: flex;
+    align-items: center;
+    background: $primary-softer;
+    border-radius: $radius-md;
+    padding: 22px 0;
+  }
+
+  &__item {
+    flex: 1;
+    padding: 0 24px;
+  }
+
+  &__label {
+    display: block;
+    font-size: 21px;
+    color: $text-muted;
+  }
+
+  &__value {
+    display: block;
+    margin-top: 8px;
+    font-size: 30px;
+    font-weight: 700;
+    color: $primary;
+  }
+
+  &__divider {
+    width: 1px;
+    height: 48px;
+    background: rgba(15, 118, 110, 0.18);
+  }
+
+  &__note {
+    margin-top: 16px;
+    padding: 16px 20px;
+    background: $accent-soft;
+    border-radius: $radius-sm;
+  }
+
+  &__note-text {
+    font-size: 21px;
+    color: #8a5a00;
+    line-height: 1.6;
+  }
+}
+
+/* Tab 卡片 */
+.tabcard {
+  padding: 0;
+
+  .tabs {
+    display: flex;
+    border-bottom: 1px solid $border-color;
+
+    &__item {
+      flex: 1;
+      height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+
+      &.is-active .tabs__text {
+        color: $primary;
+        font-weight: 700;
+      }
+
+      &.is-active::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 56px;
+        height: 6px;
+        border-radius: 3px;
+        background: $primary;
+      }
+    }
+
+    &__text {
+      font-size: 26px;
+      color: $text-secondary;
+    }
+  }
+}
+
+.info {
+  padding: 28px;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 16px;
+  }
+
+  &__cell {
+    &-label {
+      display: block;
+      font-size: 21px;
+      color: $text-hint;
+    }
+
+    &-value {
+      display: block;
+      margin-top: 4px;
+      font-size: 26px;
+      color: $text-primary;
+      font-weight: 500;
+    }
+  }
+
+  &__desc {
+    margin-top: 26px;
+    padding-top: 24px;
+    border-top: 1px solid $border-color;
+  }
+
+  &__desc-title {
+    display: block;
+    font-size: 26px;
+    font-weight: 600;
+    color: $text-primary;
+    margin-bottom: 12px;
+  }
+
+  &__desc-text {
+    font-size: 25px;
+    color: $text-secondary;
+    line-height: 1.78;
+  }
+}
+
+.facility {
+  padding: 28px;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: $primary-soft;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__text {
+    margin-left: 10px;
+    font-size: 23px;
+    color: $text-secondary;
+  }
+
+  &__nearby {
+    margin-top: 30px;
+    padding-top: 24px;
+    border-top: 1px solid $border-color;
+  }
+
+  &__nearby-title {
+    display: block;
+    font-size: 26px;
+    font-weight: 600;
+    color: $text-primary;
+    margin-bottom: 8px;
+  }
+
+  &__nearby-row {
+    display: flex;
+    align-items: center;
+    padding: 16px 0;
+  }
+
+  &__nearby-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 20px;
+    background: $primary-softer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__nearby-body {
+    margin-left: 18px;
+  }
+
+  &__nearby-name {
+    display: block;
+    font-size: 25px;
+    color: $text-primary;
+    font-weight: 500;
+  }
+
+  &__nearby-desc {
+    display: block;
+    font-size: 21px;
+    color: $text-muted;
+    margin-top: 2px;
+  }
+}
+
+/* 位置 */
+.location {
+  padding: 28px;
+
+  &__rows {
+    margin-top: 20px;
+  }
+
+  &__row {
+    display: flex;
+    align-items: flex-start;
+    padding: 12px 0;
+
+    .icon-wrap {
+      margin-top: 4px;
+    }
+  }
+
+  &__text {
+    flex: 1;
+    margin-left: 14px;
+    font-size: 24px;
+    color: $text-secondary;
+    line-height: 1.6;
+  }
+}
+
+.map {
+  position: relative;
+  height: 360px;
+  border-radius: $radius-md;
+  background: #eef4f2;
+  overflow: hidden;
+
+  &__grid {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(15, 118, 110, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 118, 110, 0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  &__road {
+    position: absolute;
+    background: #ffffff;
+
+    &--h {
+      left: 0;
+      right: 0;
+      top: 55%;
+      height: 26px;
+    }
+
+    &--v {
+      top: 0;
+      bottom: 0;
+      left: 38%;
+      width: 26px;
+    }
+  }
+
+  &__river {
+    position: absolute;
+    right: -40px;
+    top: 0;
+    bottom: 0;
+    width: 140px;
+    background: linear-gradient(180deg, #cfe6ee, #b7d9e4);
+    transform: skewX(-8deg);
+  }
+
+  &__pin {
+    position: absolute;
+    left: 42%;
+    top: 48%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translate(-50%, -100%);
+
+    &-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: $accent-strong;
+      border: 4px solid #ffffff;
+      box-shadow: 0 2px 10px rgba(224, 123, 0, 0.4);
+    }
+
+    &-label {
+      margin-top: 6px;
+      padding: 4px 14px;
+      background: #ffffff;
+      border-radius: $radius-pill;
+      box-shadow: $shadow-card;
+    }
+
+    &-text {
+      font-size: 20px;
+      color: $text-primary;
+      white-space: nowrap;
+    }
+  }
+
+  &__metro {
+    position: absolute;
+    left: 46%;
+    top: 68%;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 14px;
+    background: #ffffff;
+    border-radius: $radius-pill;
+    box-shadow: $shadow-card;
+
+    &-text {
+      font-size: 20px;
+      color: $primary;
+    }
+  }
+}
+
+/* 经纪人 */
+.agent {
+  &__head {
+    display: flex;
+    align-items: center;
+  }
+
+  &__avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 32px;
+    @include gradient-primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    &-text {
+      font-size: 42px;
+      color: #ffffff;
+      font-weight: 600;
+    }
+  }
+
+  &__info {
+    flex: 1;
+    margin-left: 22px;
+  }
+
+  &__name-row {
+    display: flex;
+    align-items: center;
+  }
+
+  &__name {
+    font-size: 30px;
+    font-weight: 700;
+    color: $text-primary;
+  }
+
+  &__rating {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    margin-left: 14px;
+    padding: 2px 12px;
+    background: $accent-soft;
+    border-radius: $radius-pill;
+
+    &-text {
+      font-size: 20px;
+      color: $accent-strong;
+      font-weight: 600;
+    }
+  }
+
+  &__company {
+    display: block;
+    margin-top: 4px;
+    font-size: 22px;
+    color: $text-muted;
+  }
+
+  &__stat {
+    display: block;
+    margin-top: 2px;
+    font-size: 21px;
+    color: $text-hint;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  &__btn {
+    flex: 1;
+    height: 84px;
+    border-radius: $radius-pill;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    &--ghost {
+      background: $primary-soft;
+    }
+
+    &--primary {
+      @include gradient-primary;
+    }
+
+    &-text {
+      font-size: 26px;
+      color: $primary;
+      font-weight: 600;
+
+      &--light {
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+/* 相似房源 */
+.similar {
+  margin-top: 32px;
+}
+
+/* 底部操作栏 */
+.actionbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  background: $bg-card;
+  padding: 16px $gap-lg calc(16px + env(safe-area-inset-bottom));
+  box-shadow: 0 -4px 24px rgba(18, 62, 54, 0.08);
+  z-index: 50;
+
+  &__icon-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 92px;
+  }
+
+  &__icon-text {
+    font-size: 19px;
+    color: $text-muted;
+    margin-top: 2px;
+  }
+
+  &__main {
+    flex: 1;
+    display: flex;
+    gap: 14px;
+    margin-left: 12px;
+  }
+
+  &__main-btn {
+    flex: 1;
+    height: 88px;
+    border-radius: $radius-pill;
+    background: $primary-soft;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--primary {
+      @include gradient-primary;
+      flex: 1.3;
+    }
+  }
+
+  &__main-text {
+    font-size: 27px;
+    font-weight: 600;
+    color: $primary;
+
+    &--light {
+      color: #ffffff;
+    }
+  }
+}

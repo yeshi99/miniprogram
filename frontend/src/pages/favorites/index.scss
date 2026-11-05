@@ -1,0 +1,126 @@
+@import '../../styles/theme.scss';
+
+.fav {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: $bg-page;
+
+  &__tabs {
+    display: flex;
+    background: $bg-card;
+    padding: 0 $gap-lg;
+  }
+
+  &__tab {
+    position: relative;
+    flex: 1;
+    height: 96px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.is-active .fav__tab-text {
+      color: $primary;
+      font-weight: 700;
+    }
+
+    &.is-active::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 6px;
+      border-radius: 3px;
+      background: $primary;
+    }
+
+    &-text {
+      font-size: 28px;
+      color: $text-secondary;
+    }
+
+    &-badge {
+      margin-left: 8px;
+      min-width: 34px;
+      height: 34px;
+      padding: 0 8px;
+      border-radius: $radius-pill;
+      background: $accent-soft;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &-text {
+        font-size: 19px;
+        color: $accent-strong;
+        font-weight: 600;
+      }
+    }
+  }
+
+  &__scroll {
+    flex: 1;
+    height: 0;
+  }
+
+  &__content {
+    padding: 24px $gap-lg 40px;
+  }
+
+  &__empty {
+    padding: 120px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-circle {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: $primary-softer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &-title {
+      margin-top: 26px;
+      font-size: 30px;
+      font-weight: 600;
+      color: $text-secondary;
+    }
+
+    &-desc {
+      margin-top: 10px;
+      font-size: 23px;
+      color: $text-hint;
+      text-align: center;
+    }
+
+    &-btn {
+      margin-top: 36px;
+      padding: 20px 60px;
+      border-radius: $radius-pill;
+      @include gradient-primary;
+    }
+
+    &-btn-text {
+      font-size: 26px;
+      color: #ffffff;
+      font-weight: 600;
+    }
+  }
+
+  &__tip {
+    padding: 20px 0;
+    text-align: center;
+
+    &-text {
+      font-size: 21px;
+      color: $text-hint;
+    }
+  }
+}

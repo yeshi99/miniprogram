@@ -1,0 +1,403 @@
+@import '../../styles/theme.scss';
+
+.market {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: $bg-page;
+
+  &__scroll {
+    flex: 1;
+    height: 0;
+    margin-top: -20px;
+  }
+
+  &__content {
+    padding: 0 $gap-lg 40px;
+  }
+
+  &__hero {
+    @include gradient-hero;
+    padding: 28px $gap-lg 48px;
+    border-radius: 0 0 40px 40px;
+
+    &-top {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+
+    &-label {
+      font-size: 22px;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    &-value-row {
+      display: flex;
+      align-items: baseline;
+      margin-top: 4px;
+    }
+
+    &-value {
+      font-size: 68px;
+      font-weight: 700;
+      color: #ffffff;
+      font-family: 'DIN Alternate', 'Helvetica Neue', sans-serif;
+      letter-spacing: -2px;
+      line-height: 1.05;
+    }
+
+    &-unit {
+      font-size: 24px;
+      color: rgba(255, 255, 255, 0.85);
+      margin-left: 8px;
+    }
+
+    &-meta {
+      display: flex;
+      align-items: center;
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+    }
+  }
+
+  &__tabs {
+    display: flex;
+    background: rgba(255, 255, 255, 0.16);
+    border-radius: $radius-pill;
+    padding: 4px;
+  }
+
+  &__tab {
+    padding: 10px 26px;
+    border-radius: $radius-pill;
+
+    &.is-active {
+      background: #ffffff;
+    }
+
+    &.is-active .market__tab-text {
+      color: $primary;
+      font-weight: 600;
+    }
+
+    &-text {
+      font-size: 24px;
+      color: rgba(255, 255, 255, 0.92);
+    }
+  }
+
+  &__meta-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__meta-divider {
+    width: 1px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  &__meta-label {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  &__meta-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-top: 2px;
+    font-family: 'DIN Alternate', sans-serif;
+
+    &--up {
+      color: #ffd9a8;
+    }
+  }
+
+  &__footer {
+    padding: 32px 0 20px;
+    text-align: center;
+
+    &-text {
+      font-size: 20px;
+      color: $text-hint;
+    }
+  }
+}
+
+.card {
+  background: $bg-card;
+  border-radius: $radius-lg;
+  padding: 28px;
+  margin-top: 20px;
+  box-shadow: $shadow-card;
+
+  &__head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    display: block;
+    font-size: 30px;
+    font-weight: 700;
+    color: $text-primary;
+  }
+
+  &__sub {
+    display: block;
+    font-size: 21px;
+    color: $text-hint;
+    margin-top: 4px;
+  }
+
+  &__badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 14px;
+    background: $primary-soft;
+    border-radius: $radius-pill;
+
+    &-text {
+      font-size: 20px;
+      color: $primary;
+    }
+  }
+}
+
+/* 折线图 */
+.chart {
+  margin-top: 8px;
+
+  &__canvas {
+    height: 200px;
+    width: 100%;
+  }
+
+  &__svg {
+    width: 100%;
+    height: 200px;
+  }
+
+  &__labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+  }
+
+  &__label {
+    font-size: 19px;
+    color: $text-hint;
+  }
+
+  &__stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed $border-color;
+  }
+
+  &__stat {
+    font-size: 21px;
+    color: $text-muted;
+  }
+}
+
+/* 工具入口 */
+.tools {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+
+  &__item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: $bg-card;
+    border-radius: $radius-lg;
+    padding: 22px 18px;
+    box-shadow: $shadow-card;
+  }
+
+  &__icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 22px;
+    background: $primary-soft;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    &--accent {
+      background: $accent-soft;
+    }
+  }
+
+  &__body {
+    flex: 1;
+    margin-left: 14px;
+  }
+
+  &__title {
+    display: block;
+    font-size: 25px;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  &__desc {
+    display: block;
+    font-size: 19px;
+    color: $text-hint;
+    margin-top: 2px;
+  }
+}
+
+/* 区域排行 */
+.rank {
+  display: flex;
+  align-items: flex-start;
+  padding: 20px 0;
+  border-bottom: 1px solid $border-color;
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  &__no {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    background: $bg-subtle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    &.is-top {
+      @include gradient-primary;
+    }
+
+    &.is-top .rank__no-text {
+      color: #ffffff;
+    }
+
+    &-text {
+      font-size: 22px;
+      font-weight: 700;
+      color: $text-muted;
+    }
+  }
+
+  &__body {
+    flex: 1;
+    margin-left: 16px;
+  }
+
+  &__title-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  &__name {
+    font-size: 27px;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  &__value-row {
+    display: flex;
+    align-items: baseline;
+  }
+
+  &__value {
+    font-size: 28px;
+    font-weight: 700;
+    color: $text-primary;
+    font-family: 'DIN Alternate', sans-serif;
+  }
+
+  &__unit {
+    font-size: 18px;
+    color: $text-hint;
+    margin-left: 3px;
+  }
+
+  &__bar {
+    height: 10px;
+    background: $bg-subtle;
+    border-radius: 5px;
+    margin-top: 12px;
+    overflow: hidden;
+  }
+
+  &__bar-fill {
+    height: 100%;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #7fd1c4, #0f766e);
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+  }
+
+  &__meta-text {
+    font-size: 19px;
+    color: $text-hint;
+  }
+
+  &__change {
+    font-size: 20px;
+    font-weight: 600;
+
+    &.is-up {
+      color: $danger;
+    }
+
+    &.is-down {
+      color: $success;
+    }
+  }
+}
+
+/* 洞察 */
+.insight {
+  margin-top: 20px;
+  padding: 26px;
+  background: $primary-softer;
+  border-radius: $radius-lg;
+  border: 1px solid rgba(15, 118, 110, 0.12);
+
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  &__title {
+    font-size: 26px;
+    font-weight: 700;
+    color: $primary;
+  }
+
+  &__text {
+    font-size: 23px;
+    color: $text-secondary;
+    line-height: 1.75;
+  }
+}

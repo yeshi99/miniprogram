@@ -1,0 +1,539 @@
+@import '../../styles/theme.scss';
+
+.home {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: $bg-page;
+
+  &__scroll {
+    flex: 1;
+    height: 0;
+  }
+
+  &__content {
+    padding: 0 $gap-lg;
+  }
+
+  &__footer {
+    padding: 40px 0 32px;
+    text-align: center;
+
+    &-text {
+      font-size: 21px;
+      color: $text-hint;
+    }
+  }
+}
+
+/* ---------- 顶部 ---------- */
+.hero {
+  @include gradient-hero;
+  padding: 24px $gap-lg 40px;
+  border-radius: 0 0 40px 40px;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: -80px;
+    top: -120px;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.07);
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__logo {
+    width: 68px;
+    height: 68px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-text {
+      font-size: 38px;
+      font-weight: 700;
+      color: #ffffff;
+      font-family: 'Songti SC', serif;
+    }
+  }
+
+  &__brand-text {
+    flex: 1;
+    margin-left: 20px;
+  }
+
+  &__title {
+    display: block;
+    font-size: 38px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 1px;
+  }
+
+  &__subtitle {
+    display: block;
+    font-size: 21px;
+    color: rgba(255, 255, 255, 0.78);
+    margin-top: 2px;
+    letter-spacing: 0.5px;
+  }
+
+  &__city {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 18px;
+    background: rgba(255, 255, 255, 0.16);
+    border-radius: $radius-pill;
+
+    &-text {
+      font-size: 23px;
+      color: #ffffff;
+    }
+  }
+
+  &__stat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 24px;
+    padding: 0 4px;
+    position: relative;
+    z-index: 2;
+
+    &-label {
+      font-size: 22px;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    &-value-row {
+      display: flex;
+      align-items: baseline;
+      margin-top: 2px;
+    }
+
+    &-value {
+      font-size: 44px;
+      font-weight: 700;
+      color: #ffffff;
+      font-family: 'DIN Alternate', 'Helvetica Neue', sans-serif;
+      letter-spacing: -1px;
+    }
+
+    &-unit {
+      font-size: 22px;
+      color: rgba(255, 255, 255, 0.8);
+      margin-left: 6px;
+    }
+
+    &-change {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.14);
+      border-radius: $radius-pill;
+
+      &-text {
+        font-size: 21px;
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+/* ---------- 租售切换 ---------- */
+.segmented {
+  display: flex;
+  margin-top: 26px;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: $radius-pill;
+  padding: 5px;
+  width: 300px;
+  position: relative;
+  z-index: 2;
+
+  &__item {
+    flex: 1;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-pill;
+    transition: all 0.22s ease;
+
+    &.is-active {
+      background: #ffffff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    &.is-active .segmented__text {
+      color: $primary;
+      font-weight: 700;
+    }
+  }
+
+  &__text {
+    font-size: 27px;
+    color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+/* ---------- 搜索框 ---------- */
+.searchbar {
+  display: flex;
+  align-items: center;
+  height: 90px;
+  background: #ffffff;
+  border-radius: $radius-pill;
+  padding: 0 10px 0 26px;
+  box-shadow: 0 8px 24px rgba(9, 60, 54, 0.16);
+  position: relative;
+  z-index: 2;
+
+  &__placeholder {
+    flex: 1;
+    margin-left: 14px;
+    font-size: 25px;
+    color: $text-hint;
+  }
+
+  &__btn {
+    height: 70px;
+    padding: 0 30px;
+    border-radius: $radius-pill;
+    @include gradient-primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-text {
+      font-size: 26px;
+      color: #ffffff;
+      font-weight: 600;
+    }
+  }
+}
+
+/* ---------- 快捷入口 ---------- */
+.quick {
+  display: flex;
+  justify-content: space-between;
+  background: $bg-card;
+  border-radius: $radius-lg;
+  padding: 28px 16px;
+  margin-top: 24px;
+  box-shadow: $shadow-card;
+
+  &__item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__icon {
+    width: 84px;
+    height: 84px;
+    border-radius: 26px;
+    background: $primary-soft;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__label {
+    font-size: 23px;
+    color: $text-secondary;
+    margin-top: 12px;
+    white-space: nowrap;
+  }
+}
+
+/* ---------- 区块 ---------- */
+.section {
+  margin-top: 40px;
+
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  &__title {
+    font-size: 34px;
+    font-weight: 700;
+    color: $text-primary;
+    letter-spacing: -0.3px;
+    position: relative;
+    padding-left: 22px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 30px;
+      border-radius: 4px;
+      background: linear-gradient(180deg, $primary-light, $primary);
+    }
+  }
+
+  &__more {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+
+    &-text {
+      font-size: 23px;
+      color: $text-muted;
+    }
+  }
+
+  &__badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 14px;
+    background: $primary-soft;
+    border-radius: $radius-pill;
+
+    &-text {
+      font-size: 20px;
+      color: $primary;
+    }
+  }
+}
+
+/* ---------- 热门片区 ---------- */
+.hotarea {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    background: $bg-card;
+    border-radius: $radius-md;
+    padding: 20px;
+    box-shadow: $shadow-card;
+  }
+
+  &__rank {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: $bg-subtle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    &.is-top {
+      background: $accent-soft;
+    }
+
+    &.is-top .hotarea__rank-text {
+      color: $accent-strong;
+      font-weight: 700;
+    }
+
+    &-text {
+      font-size: 22px;
+      color: $text-muted;
+      font-weight: 600;
+    }
+  }
+
+  &__name {
+    flex: 1;
+    margin-left: 14px;
+    font-size: 27px;
+    color: $text-primary;
+    font-weight: 500;
+  }
+
+  &__count {
+    font-size: 20px;
+    color: $text-hint;
+  }
+}
+
+/* ---------- 区域均价 ---------- */
+.district-scroll {
+  width: 100%;
+  white-space: nowrap;
+}
+
+.district-row {
+  display: flex;
+  gap: 14px;
+  padding-bottom: 6px;
+}
+
+.district-card {
+  flex-shrink: 0;
+  width: 200px;
+  background: $bg-card;
+  border-radius: $radius-md;
+  padding: 20px;
+  box-shadow: $shadow-card;
+
+  &__name {
+    font-size: 25px;
+    color: $text-primary;
+    font-weight: 600;
+  }
+
+  &__price {
+    display: flex;
+    align-items: baseline;
+    margin-top: 8px;
+  }
+
+  &__num {
+    font-size: 36px;
+    color: $text-primary;
+  }
+
+  &__unit {
+    font-size: 19px;
+    color: $text-muted;
+    margin-left: 3px;
+  }
+
+  &__change {
+    display: flex;
+    align-items: center;
+    margin-top: 6px;
+
+    &-text {
+      font-size: 20px;
+      margin-left: 2px;
+    }
+
+    &.is-up .district-card__change-text {
+      color: $danger;
+    }
+
+    &.is-down .district-card__change-text {
+      color: $success;
+    }
+  }
+}
+
+/* ---------- 网格 ---------- */
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+/* ---------- 专题横幅 ---------- */
+.banner {
+  position: relative;
+  margin-top: 40px;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-float;
+
+  &__cover {
+    width: 100%;
+  }
+
+  &__mask {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    padding: 28px;
+    background: linear-gradient(100deg, rgba(11, 91, 85, 0.92) 0%, rgba(11, 91, 85, 0.72) 55%, rgba(11, 91, 85, 0.25) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__tag {
+    align-self: flex-start;
+    padding: 4px 16px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: $radius-pill;
+    margin-bottom: 14px;
+
+    &-text {
+      font-size: 20px;
+      color: #ffffff;
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.4;
+  }
+
+  &__desc {
+    font-size: 21px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 8px;
+  }
+
+  &__action {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    padding: 10px 24px;
+    background: #ffffff;
+    border-radius: $radius-pill;
+
+    &-text {
+      font-size: 22px;
+      color: $primary;
+      font-weight: 600;
+      margin-right: 2px;
+    }
+  }
+}
+
+/* ---------- 骨架屏 ---------- */
+.skeleton-card {
+  background: $bg-card;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  margin-bottom: $gap-md;
+
+  &__img {
+    height: 300px;
+    border-radius: 0;
+  }
+
+  &__body {
+    padding: 24px;
+  }
+
+  &__line {
+    height: 28px;
+    margin-bottom: 14px;
+  }
+}

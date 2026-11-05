@@ -1,0 +1,56 @@
+// 武汉租售 · 设计令牌
+// 视觉方向：可信赖的城市房产工具 —— 深青绿主色 + 暖琥珀强调，纸感底色 + 精致卡片
+
+$primary: #0f766e;
+$primary-dark: #0b5b55;
+$primary-light: #14b8a6;
+$primary-soft: #e6f4f1;
+$primary-softer: #f2faf8;
+
+$accent: #f59e0b;
+$accent-strong: #e07b00;
+$accent-soft: #fff4e0;
+
+$text-primary: #14231f;
+$text-secondary: #46555a;
+$text-muted: #7a8a8f;
+$text-hint: #a5b2b7;
+
+$bg-page: #f4f7f6;
+$bg-card: #ffffff;
+$bg-subtle: #f7faf9;
+
+$border-color: #e8efed;
+$border-strong: #d8e3e0;
+
+$success: #12a67a;
+$danger: #e04f3d;
+
+$radius-sm: 10px;
+$radius-md: 16px;
+$radius-lg: 24px;
+$radius-xl: 32px;
+$radius-pill: 999px;
+
+$gap-xs: 8px;
+$gap-sm: 12px;
+$gap-md: 16px;
+$gap-lg: 24px;
+$gap-xl: 32px;
+
+$shadow-card: 0 4px 20px rgba(18, 62, 54, 0.06);
+$shadow-float: 0 8px 32px rgba(18, 62, 54, 0.12);
+
+// 通用渐变
+@mixin gradient-primary {
+  background: linear-gradient(135deg, #0f766e 0%, #12958a 100%);
+}
+
+@mixin gradient-hero {
+  background: linear-gradient(160deg, #0f766e 0%, #14867c 45%, #1aa393 100%);
+}
+
+@mixin text-price {
+  color: $accent-strong;
+  font-weight: 700;
+}

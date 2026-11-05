@@ -1,0 +1,354 @@
+@import '../../styles/theme.scss';
+
+.publish {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: $bg-page;
+
+  &__scroll {
+    flex: 1;
+    height: 0;
+  }
+
+  &__content {
+    padding: 24px $gap-lg 60px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 20px;
+    margin-top: 32px;
+  }
+
+  &__btn {
+    flex: 1;
+    height: 92px;
+    border-radius: $radius-pill;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--ghost {
+      background: $bg-card;
+      border: 1px solid $border-strong;
+      flex: 1;
+    }
+
+    &--primary {
+      @include gradient-primary;
+      flex: 2;
+    }
+
+    &.is-disabled {
+      opacity: 0.6;
+    }
+
+    &-text {
+      font-size: 28px;
+      color: $text-secondary;
+      font-weight: 600;
+
+      &--light {
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+/* 步骤条 */
+.steps {
+  background: $bg-card;
+  padding: 28px $gap-lg 24px;
+
+  &__row {
+    display: flex;
+    align-items: center;
+    padding: 0 60px;
+  }
+
+  &__dot {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: $bg-subtle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    &.is-active {
+      @include gradient-primary;
+    }
+
+    &.is-active .steps__dot-text {
+      color: #ffffff;
+    }
+
+    &-text {
+      font-size: 24px;
+      font-weight: 700;
+      color: $text-hint;
+    }
+  }
+
+  &__line {
+    flex: 1;
+    height: 4px;
+    background: $bg-subtle;
+    margin: 0 12px;
+
+    &.is-active {
+      background: $primary;
+    }
+  }
+
+  &__labels {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 44px;
+    margin-top: 12px;
+  }
+
+  &__label {
+    font-size: 21px;
+    color: $text-muted;
+  }
+}
+
+/* 卡片 */
+.card {
+  background: $bg-card;
+  border-radius: $radius-lg;
+  padding: 28px;
+  margin-bottom: 20px;
+  box-shadow: $shadow-card;
+
+  &__title {
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+    color: $text-primary;
+    margin-bottom: 20px;
+  }
+}
+
+/* 分段 */
+.seg {
+  display: flex;
+  background: $bg-subtle;
+  border-radius: $radius-md;
+  padding: 5px;
+
+  &__item {
+    flex: 1;
+    height: 76px;
+    border-radius: $radius-sm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.is-active {
+      background: $bg-card;
+      box-shadow: 0 2px 8px rgba(18, 62, 54, 0.08);
+    }
+
+    &.is-active .seg__text {
+      color: $primary;
+      font-weight: 700;
+    }
+  }
+
+  &__text {
+    font-size: 26px;
+    color: $text-secondary;
+  }
+}
+
+/* 字段 */
+.field {
+  margin-bottom: 24px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__label {
+    display: block;
+    font-size: 23px;
+    color: $text-muted;
+    margin-bottom: 10px;
+  }
+
+  &__input {
+    width: 100%;
+    height: 84px;
+    background: $bg-subtle;
+    border-radius: $radius-sm;
+    padding: 0 20px;
+    font-size: 26px;
+    color: $text-primary;
+  }
+
+  &__placeholder {
+    color: $text-hint;
+    font-size: 24px;
+  }
+
+  &__textarea {
+    width: 100%;
+    height: 200px;
+    background: $bg-subtle;
+    border-radius: $radius-sm;
+    padding: 20px;
+    font-size: 25px;
+    color: $text-primary;
+    line-height: 1.6;
+  }
+
+  &__hint {
+    display: block;
+    font-size: 20px;
+    color: $text-hint;
+    margin-top: 8px;
+    text-align: right;
+  }
+}
+
+.field-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 24px;
+
+  &__item {
+    flex: 1;
+  }
+}
+
+/* 选择器 */
+.selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  &__chip {
+    padding: 12px 22px;
+    background: $bg-subtle;
+    border-radius: $radius-sm;
+    border: 1px solid transparent;
+    transition: all 0.16s ease;
+
+    &.is-active {
+      background: $primary-soft;
+      border-color: $primary;
+    }
+
+    &.is-active .selector__chip-text {
+      color: $primary;
+      font-weight: 600;
+    }
+
+    &-text {
+      font-size: 23px;
+      color: $text-secondary;
+    }
+  }
+}
+
+/* 计数器 */
+.counter-row {
+  display: flex;
+  gap: 20px;
+}
+
+.counter {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: $bg-subtle;
+  border-radius: $radius-sm;
+  padding: 8px 12px;
+
+  &__btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: $bg-card;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 4px rgba(18, 62, 54, 0.08);
+
+    &-text {
+      font-size: 32px;
+      color: $primary;
+      line-height: 1;
+    }
+  }
+
+  &__value {
+    font-size: 26px;
+    color: $text-primary;
+    font-weight: 600;
+  }
+}
+
+/* 预览 */
+.summary {
+  &__rows {
+    margin-top: 4px;
+  }
+
+  &__row {
+    display: flex;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px dashed $border-color;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__label {
+    width: 140px;
+    flex-shrink: 0;
+    font-size: 23px;
+    color: $text-hint;
+  }
+
+  &__value {
+    flex: 1;
+    font-size: 24px;
+    color: $text-primary;
+    text-align: right;
+
+    &--wrap {
+      text-align: right;
+      line-height: 1.5;
+    }
+
+    &--price {
+      color: $accent-strong;
+      font-weight: 700;
+    }
+  }
+}
+
+.notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 22px;
+  background: $primary-softer;
+  border-radius: $radius-md;
+  border: 1px solid rgba(15, 118, 110, 0.12);
+
+  &__text {
+    flex: 1;
+    font-size: 21px;
+    color: $text-secondary;
+    line-height: 1.65;
+  }
+}
