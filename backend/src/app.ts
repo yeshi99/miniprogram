@@ -10,6 +10,7 @@ import { propertyRouter } from './modules/properties.js'
 import { favoriteRouter } from './modules/favorites.js'
 import { userRouter } from './modules/user.js'
 import { marketRouter } from './modules/market.js'
+import { payRouter } from './modules/pay.js'
 // ============================================
 // Add your domain module imports here
 // ============================================
@@ -44,6 +45,7 @@ export const createApp = (): Application => {
   app.use(`${env.API_PREFIX}/favorites`, favoriteRouter)
   app.use(`${env.API_PREFIX}/user`, userRouter)
   app.use(`${env.API_PREFIX}/market`, marketRouter)
+  app.use(`${env.API_PREFIX}/pay`, payRouter)
 
   // Error handling
   app.use(errorHandler)

@@ -22,6 +22,7 @@ const MENU_GROUPS: { title: string; items: MenuItem[] }[] = [
     items: [
       { key: 'favorites', label: '我的收藏', icon: 'heart', url: '/pages/favorites/index', badgeKey: 'favoriteCount' },
       { key: 'listings', label: '我的发布', icon: 'list', url: '/pages/my-listings/index', badgeKey: 'listingCount' },
+      { key: 'pay', label: '发布服务', desc: '会员 / 次数包', icon: 'star', url: '/pages/pay/index' },
       { key: 'history', label: '浏览历史', icon: 'history', url: '/pages/favorites/index?tab=history', badgeKey: 'historyCount' },
       { key: 'demands', label: '我的需求', icon: 'message', url: '/pages/demand/index?tab=my', badgeKey: 'demandCount' },
     ],
@@ -29,7 +30,7 @@ const MENU_GROUPS: { title: string; items: MenuItem[] }[] = [
   {
     title: '常用工具',
     items: [
-      { key: 'publish', label: '发布房源', desc: '房东 / 经纪人免费发布', icon: 'plus', url: '/pages/publish/index' },
+      { key: 'publish', label: '发布房源', desc: '付费开通后即可发布', icon: 'plus', url: '/pages/publish/index' },
       { key: 'calc', label: '房贷计算器', desc: '月供、首付、税费估算', icon: 'calc', url: '/pages/calculator/index' },
       { key: 'market', label: '武汉行情', desc: '13 个区域价格走势', icon: 'trend', url: '/pages/market/index' },
     ],

@@ -8,6 +8,9 @@ import type {
   MarketOverview,
   MortgageResult,
   MyListing,
+  PayConfirmResult,
+  PayPackage,
+  PayStatus,
   PropertyDetail,
   SearchSuggestion,
   UserOverview,
@@ -186,5 +189,30 @@ export async function submitDemand(payload: {
   remark?: string
 }) {
   const res = await apiClient.post<ApiResponse<{ id: string; message: string }>>('/api/user/demands', payload)
+  return unwrap(res)
+}
+
+// ============ 付费发布 ============
+
+export async function fetchPayPackages() {
+  const res = await apiClient.post<ApiResponse<{ list: PayPackage[] }>>('/api/pay/packages', {})
+  return unwrap(res)
+}
+
+export async function fetchPayStatus() {
+  const res = await apiClient.post<ApiResponse<PayStatus>>('/api/pay/status', {})
+  return unwrap(res)
+}
+
+export async function createPayOrder(packageId: string) {
+  const res = await apiClient.post<ApiResponse<{ orderId: string; amount: number; packageName: string; status: string }>>(
+    '/api/pay/order',
+    { packageId }
+  )
+  return unwrap(res)
+}
+
+export async function confirmPayOrder(orderId: string) {
+  const res = await apiClient.post<ApiResponse<PayConfirmResult>>('/api/pay/confirm', { orderId })
   return unwrap(res)
 }

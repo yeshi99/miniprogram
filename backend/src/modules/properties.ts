@@ -11,6 +11,7 @@ import {
 } from '../types/api.types.js'
 import { filterProperties, paginate, sortProperties, toListItem, getImageSeed } from '../services/property.service.js'
 import { SEARCH_SUGGESTIONS } from '../data/districts.js'
+import { consumePublishEntitlement } from './pay.js'
 import type { Property } from '../types/property.types.js'
 
 export const propertyRouter = Router()
@@ -162,6 +163,14 @@ propertyRouter.get('/:id', (req, res) => {
  */
 propertyRouter.post('/', validate(publishPropertySchema), (req, res) => {
   const input = req.body
+  const userId = (req.headers['x-user-id'] as string) || 'guest'
+
+  // 付费校验：未开通发布服务的用户不能发布
+  const ent = consumePublishEntitlement(userId)
+  if (!ent.allowed) {
+    throw new AppError(403, '请先购买发布服务后再发布房源')
+  }
+
   const seq = userListings.length + 1
   const totalFloors = input.totalFloors || 18
 
@@ -211,7 +220,12 @@ propertyRouter.post('/', validate(publishPropertySchema), (req, res) => {
 
   res.status(201).json({
     success: true,
-    data: { id: property.id, message: '发布成功，房源将在审核通过后展示' },
+    data: {
+      id: property.id,
+      message: '发布成功，房源将在审核通过后展示',
+      remaining: ent.kind === 'quota' ? ent.remaining : null,
+      remainDays: ent.kind === 'membership' ? ent.remainDays : null,
+    },
   })
 })
 

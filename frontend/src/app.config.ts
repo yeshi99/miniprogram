@@ -9,6 +9,7 @@ export default defineAppConfig({
     'pages/favorites/index',
     'pages/my-listings/index',
     'pages/publish/index',
+    'pages/pay/index',
     'pages/calculator/index',
     'pages/district/index',
     'pages/demand/index'

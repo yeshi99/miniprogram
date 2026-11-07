@@ -55,6 +55,20 @@ class ApiClient {
     }
   }
 
+  /** 设备级用户标识：付费权益、发布记录按此隔离（演示环境无真实登录） */
+  private getUserId(): string {
+    try {
+      let id = Taro.getStorageSync('device_id');
+      if (!id) {
+        id = 'u' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+        Taro.setStorageSync('device_id', id);
+      }
+      return id;
+    } catch (error) {
+      return 'guest';
+    }
+  }
+
   private async request<T>(config: RequestConfig): Promise<T> {
     const { url, method = 'GET', data, header = {} } = config;
 
@@ -62,6 +76,7 @@ class ApiClient {
     if (token) {
       header['Authorization'] = `Bearer ${token}`;
     }
+    header['x-user-id'] = this.getUserId();
 
     try {
       const response = await Taro.request({
@@ -90,8 +105,17 @@ class ApiClient {
 
       // Extract error message from response
       const errorData = response.data as any;
-      const errorMessage = errorData?.error || errorData?.message || `Request failed with status ${response.statusCode}`;
-      throw new Error(errorMessage);
+      let errorMessage =
+        errorData?.message ||
+        (typeof errorData?.error === 'string' ? errorData.error : null) ||
+        `Request failed with status ${response.statusCode}`;
+      // Zod 校验失败时展示第一条具体字段错误
+      if (Array.isArray(errorData?.errors) && errorData.errors.length > 0) {
+        errorMessage = errorData.errors[0]?.message || errorMessage;
+      }
+      const err = new Error(errorMessage) as Error & { statusCode?: number };
+      err.statusCode = response.statusCode;
+      throw err;
     } catch (error) {
       console.error('API request error:', error);
       throw error;

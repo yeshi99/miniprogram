@@ -1,9 +1,9 @@
 import { View, Text, Input, Textarea, ScrollView } from '@tarojs/components'
-import Taro from '@tarojs/taro'
+import Taro, { useDidShow } from '@tarojs/taro'
 import { useState } from 'react'
 import Icon from '@/components/Icon'
-import { publishProperty } from '@/services/property'
-import type { DealType } from '@/types/property'
+import { publishProperty, fetchPayStatus } from '@/services/property'
+import type { DealType, PayStatus } from '@/types/property'
 import './index.scss'
 
 const DISTRICT_AREAS: Record<string, string[]> = {
@@ -52,6 +52,35 @@ export default function Publish() {
   const [contactName, setContactName] = useState('')
   const [contactPhone, setContactPhone] = useState('')
   const [submitting, setSubmitting] = useState(false)
+  const [payStatus, setPayStatus] = useState<PayStatus | null>(null)
+
+  useDidShow(() => {
+    fetchPayStatus()
+      .then(setPayStatus)
+      .catch(() => setPayStatus(null))
+  })
+
+  /** 权益描述文案 */
+  const entitlementText = () => {
+    if (!payStatus) return ''
+    if (payStatus.kind === 'membership') return `会员生效中 · 剩余 ${payStatus.remainDays} 天`
+    if (payStatus.kind === 'quota') return `次数包 · 剩余 ${payStatus.remaining} 次`
+    return ''
+  }
+
+  /** 未开通发布服务时引导去付费页 */
+  const guideToPay = () => {
+    Taro.showModal({
+      title: '需要开通发布服务',
+      content: '平台实行付费发布：开通会员或购买次数包后即可发布房源信息。\n\n是否前往开通？',
+      confirmText: '去开通',
+      cancelText: '暂不开通',
+    })
+      .then((m) => {
+        if (m.confirm) Taro.navigateTo({ url: '/pages/pay/index' }).catch(() => {})
+      })
+      .catch(() => {})
+  }
 
   const validateStep1 = () => {
     if (!title.trim() || title.trim().length < 4) {
@@ -83,6 +112,10 @@ export default function Publish() {
   }
 
   const handleSubmit = async () => {
+    if (payStatus && !payStatus.entitled) {
+      guideToPay()
+      return
+    }
     if (!contactName.trim()) {
       Taro.showToast({ title: '请填写联系人', icon: 'none' })
       return
@@ -117,17 +150,28 @@ export default function Publish() {
         contactName: contactName.trim(),
         contactPhone,
       })
-      Taro.showModal({
+      // 注意：showModal 的 confirmText 不能超过 4 个字，且需捕获异常避免未处理 Promise 拒绝
+      const modal = await Taro.showModal({
         title: '发布成功',
         content: `${res.message}\n房源编号：${res.id}`,
         showCancel: false,
-        confirmText: '查看我的发布',
-        success: () => {
-          Taro.redirectTo({ url: '/pages/my-listings/index' })
-        },
-      })
+        confirmText: '查看',
+        cancelText: '留着',
+      }).catch(() => ({ confirm: true, cancel: false }) as { confirm: boolean; cancel: boolean })
+
+      if (modal.confirm) {
+        try {
+          await Taro.redirectTo({ url: '/pages/my-listings/index' })
+        } catch {
+          // 跳转失败不影响发布结果
+        }
+      }
     } catch (e: any) {
-      Taro.showToast({ title: e?.message || '发布失败，请检查表单', icon: 'none' })
+      if (e?.statusCode === 403) {
+        guideToPay()
+      } else {
+        Taro.showToast({ title: e?.message || '发布失败，请检查表单', icon: 'none' })
+      }
     } finally {
       setSubmitting(false)
     }
@@ -141,6 +185,21 @@ export default function Publish() {
 
   return (
     <View className='publish'>
+      {/* 付费权益提示 */}
+      {payStatus && !payStatus.entitled && (
+        <View className='pay-banner pay-banner--warn' onClick={guideToPay}>
+          <Icon name='shield' size={30} color='#E07B00' />
+          <Text className='pay-banner__text'>发布房源需先开通发布服务（会员 / 次数包）</Text>
+          <Text className='pay-banner__btn'>去开通</Text>
+        </View>
+      )}
+      {payStatus?.entitled && (
+        <View className='pay-banner pay-banner--ok'>
+          <Icon name='check' size={30} color='#0F766E' />
+          <Text className='pay-banner__text'>{entitlementText()}，可直接发布</Text>
+        </View>
+      )}
+
       {/* 步骤条 */}
       <View className='steps'>
         <View className='steps__row'>

@@ -3,6 +3,6 @@
   "sub_project_type": "",
   "name": "武汉租售",
   "app_slug": "wuhan-house",
-  "version_description": "Complete Wuhan house rental marketplace app",
+  "version_description": "Fix publish bug and add paid publishing",
   "preview_type": "mobile"
 }

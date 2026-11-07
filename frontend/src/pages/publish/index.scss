@@ -1,5 +1,36 @@
 @import '../../styles/theme.scss';
 
+.pay-banner {
+  margin: 20px $gap-lg 0;
+  border-radius: $radius-md;
+  padding: 20px $gap-md;
+  display: flex;
+  align-items: center;
+  gap: $gap-sm;
+
+  &--warn {
+    background: $accent-soft;
+  }
+
+  &--ok {
+    background: $primary-soft;
+  }
+
+  &__text {
+    flex: 1;
+    font-size: 24px;
+    color: $text-secondary;
+    line-height: 1.5;
+  }
+
+  &__btn {
+    font-size: 24px;
+    font-weight: 600;
+    color: $accent-strong;
+    flex-shrink: 0;
+  }
+}
+
 .publish {
   min-height: 100vh;
   display: flex;

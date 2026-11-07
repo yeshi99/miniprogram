@@ -121,6 +121,18 @@ export const districtDetailSchema = z.object({
   }),
 })
 
+export const payOrderSchema = z.object({
+  body: z.object({
+    packageId: z.enum(['single', 'monthly', 'quarterly']),
+  }),
+})
+
+export const payConfirmSchema = z.object({
+  body: z.object({
+    orderId: z.string().min(1),
+  }),
+})
+
 export const mortgageSchema = z.object({
   body: z.object({
     totalPrice: z.number().positive('总价需大于 0'),

@@ -151,6 +151,44 @@ export interface MyListing extends PropertyListItem {
   status: 'online' | 'offline'
 }
 
+export interface PayPackage {
+  id: 'single' | 'monthly' | 'quarterly'
+  name: string
+  price: number
+  type: 'quota' | 'membership'
+  quota: number | null
+  validityDays: number | null
+  desc: string
+  highlights: string[]
+  best?: boolean
+}
+
+export interface PayStatus {
+  entitled: boolean
+  kind: 'quota' | 'membership' | null
+  remainDays: number | null
+  remaining: number | null
+  packageId: string | null
+  orders: {
+    id: string
+    packageId: string
+    packageName: string
+    amount: number
+    status: 'pending' | 'paid' | 'canceled'
+    createdAt: string
+    paidAt: string | null
+  }[]
+}
+
+export interface PayConfirmResult {
+  orderId: string
+  status: string
+  message: string
+  entitled: boolean
+  remainDays: number | null
+  remaining: number | null
+}
+
 export interface ApiResponse<T> {
   success: boolean
   data: T

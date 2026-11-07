@@ -31,11 +31,37 @@ export interface StatusRecord {
   status: 'online' | 'offline'
 }
 
+export type PayOrderStatus = 'pending' | 'paid' | 'canceled'
+
+export interface PayOrder {
+  id: string
+  userId: string
+  packageId: string
+  packageName: string
+  amount: number
+  status: PayOrderStatus
+  createdAt: string
+  paidAt: string | null
+}
+
+/** 用户权益：quota = 按次数（remaining 递减），membership = 期限内不限次 */
+export interface Entitlement {
+  id: string
+  userId: string
+  packageId: string
+  type: 'quota' | 'membership'
+  remaining: number | null
+  expiresAt: string | null
+  createdAt: string
+}
+
 class MemoryStore {
   favorites: FavoriteRecord[] = []
   demands: DemandRecord[] = []
   views: ViewRecord[] = []
   publishStatus: StatusRecord[] = []
+  payOrders: PayOrder[] = []
+  entitlements: Entitlement[] = []
 }
 
 export const store = new MemoryStore()

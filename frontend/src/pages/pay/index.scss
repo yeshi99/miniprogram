@@ -1,0 +1,290 @@
+@use '@/styles/theme' as *;
+
+.pay {
+  min-height: 100vh;
+  background: $bg-page;
+  display: flex;
+  flex-direction: column;
+
+  &__navbar {
+    background: $primary;
+    padding-bottom: 20px;
+
+    &-title {
+      display: block;
+      color: #fff;
+      font-size: 34px;
+      font-weight: 600;
+      padding: 16px $gap-lg 0;
+    }
+  }
+
+  &__scroll {
+    flex: 1;
+    height: 0;
+  }
+
+  &__content {
+    padding: $gap-md $gap-lg 0;
+    margin-top: -20px;
+  }
+
+  &__section {
+    margin-top: $gap-lg;
+
+    &-title {
+      display: block;
+      font-size: 30px;
+      font-weight: 600;
+      color: $text-primary;
+      margin-bottom: $gap-sm;
+    }
+  }
+
+  &__btn {
+    margin-top: $gap-xl;
+    height: 92px;
+    border-radius: $radius-pill;
+    background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: $shadow-float;
+
+    &.is-disabled {
+      opacity: 0.6;
+    }
+
+    &-text {
+      color: #fff;
+      font-size: 32px;
+      font-weight: 600;
+    }
+  }
+
+  &__tips {
+    margin-top: $gap-md;
+    display: flex;
+    gap: $gap-xs;
+    align-items: flex-start;
+
+    &-text {
+      flex: 1;
+      font-size: 22px;
+      color: $text-hint;
+      line-height: 1.6;
+    }
+  }
+
+  &__bottom-space {
+    height: 60px;
+  }
+}
+
+/* 权益状态卡 */
+.ent {
+  background: $bg-card;
+  border-radius: $radius-lg;
+  padding: $gap-lg;
+  display: flex;
+  align-items: center;
+  gap: $gap-md;
+  box-shadow: $shadow-card;
+
+  &--ok {
+    background: linear-gradient(135deg, $primary-softer 0%, #fff 70%);
+  }
+
+  &__icon {
+    width: 88px;
+    height: 88px;
+    border-radius: $radius-md;
+    background: $bg-subtle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__title {
+    display: block;
+    font-size: 32px;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  &__desc {
+    display: block;
+    margin-top: 8px;
+    font-size: 24px;
+    color: $text-secondary;
+    line-height: 1.5;
+  }
+}
+
+/* 套餐卡片 */
+.pkg {
+  position: relative;
+  background: $bg-card;
+  border: 3px solid $border-color;
+  border-radius: $radius-lg;
+  padding: $gap-lg;
+  display: flex;
+  gap: $gap-sm;
+  margin-bottom: $gap-sm;
+  transition: border-color 0.2s;
+
+  &.is-selected {
+    border-color: $primary;
+    background: $primary-softer;
+  }
+
+  &__badge {
+    display: inline-flex;
+    background: $accent;
+    border-radius: $radius-sm;
+    padding: 2px 12px;
+    margin-left: $gap-xs;
+    vertical-align: middle;
+
+    &-text {
+      font-size: 20px;
+      color: #fff;
+      font-weight: 600;
+    }
+  }
+
+  &__radio {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 3px solid $border-strong;
+    margin-top: 6px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .is-selected & {
+      border-color: $primary;
+    }
+
+    &-inner {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: $primary;
+    }
+  }
+
+  &__main {
+    flex: 1;
+  }
+
+  &__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  &__name {
+    font-size: 32px;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  &__price {
+    color: $danger;
+
+    &-symbol {
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    &-num {
+      font-size: 40px;
+      font-weight: 700;
+    }
+  }
+
+  &__desc {
+    display: block;
+    margin-top: 6px;
+    font-size: 24px;
+    color: $text-secondary;
+  }
+
+  &__highlights {
+    margin-top: $gap-sm;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__highlight {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &-text {
+      font-size: 22px;
+      color: $text-muted;
+    }
+  }
+}
+
+/* 交易记录 */
+.orders {
+  background: $bg-card;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-card;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $gap-md $gap-lg;
+    border-bottom: 1px solid $border-color;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__name {
+    display: block;
+    font-size: 26px;
+    font-weight: 500;
+    color: $text-primary;
+  }
+
+  &__time {
+    display: block;
+    margin-top: 4px;
+    font-size: 20px;
+    color: $text-hint;
+  }
+
+  &__right {
+    text-align: right;
+  }
+
+  &__amount {
+    display: block;
+    font-size: 28px;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  &__status {
+    display: block;
+    margin-top: 4px;
+    font-size: 22px;
+    color: $text-hint;
+
+    &.is-paid {
+      color: $success;
+    }
+  }
+}
