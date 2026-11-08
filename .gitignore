@@ -31,3 +31,6 @@ project.private.config.json
 .cloudstudio/
 .codebuddy/
 .templates/
+
+# 本地打包产物
+*.zip
