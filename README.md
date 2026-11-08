@@ -43,27 +43,47 @@
 
 ## 快速启动
 
-要求：Node.js ≥ 18，推荐 pnpm（npm 亦可）。
+### 方式一：微信开发者工具（无需安装 Node，直接看小程序）
+
+仓库已内置编译好的小程序产物 `weapp/`，克隆后即可运行：
 
 ```bash
-# 克隆
 git clone https://github.com/yeshi99/miniprogram.git
-cd miniprogram
-
-# 后端（端口 3000）
-pnpm --prefix backend install
-cp backend/.env.example backend/.env
-pnpm --prefix backend dev
-
-# 前端 H5 预览（端口 5173，已配置 /api 代理到 3000）
-pnpm --prefix frontend install
-pnpm --prefix frontend dev:h5
-# 打开 http://localhost:5173
-
-# 微信小程序端
-pnpm --prefix frontend dev:weapp
-# 用微信开发者工具导入 frontend/ 目录即可预览
 ```
+
+1. 打开**微信开发者工具** → 导入项目 → 目录选择 **仓库根目录**（不是 `frontend/`）
+   - 工程配置 `project.config.json` 已指向 `weapp/`，无需手动设置
+   - AppID 可选择「测试号」或填写自己的；`project.config.json` 默认游客 AppID
+2. 详情 → 本地设置 → 勾选 **不校验合法域名、web-view（业务域名）、TLS 版本以及 HTTPS 证书**
+3. 若页面数据为空，说明后端未启动，见下方「启动后端」
+
+> 也可以直接导入 `weapp/` 子目录，效果相同。
+
+### 启动后端（小程序与 H5 都需要）
+
+数据来自本地 Express 服务（`http://localhost:3000`），需 Node.js ≥ 18：
+
+- **Windows**：双击仓库根目录的 `start-backend.bat`（自动装依赖并启动）
+- **macOS / Linux**：`bash start-backend.sh`
+- 或手动：`pnpm --prefix backend install && cp backend/.env.example backend/.env && pnpm --prefix backend dev`
+
+### 方式二：浏览器 H5 预览（改代码时热更新更方便）
+
+```bash
+pnpm --prefix backend install && pnpm --prefix backend dev   # 终端 1：后端 3000
+pnpm --prefix frontend install && pnpm --prefix frontend dev:h5  # 终端 2：H5 5173
+# 打开 http://localhost:5173
+```
+
+### 修改前端代码后重新生成小程序产物
+
+```bash
+pnpm --prefix frontend dev:weapp     # 监听模式，产物实时输出到 weapp/
+# 或一次性构建
+pnpm --prefix frontend build:weapp
+```
+
+`weapp/` 是构建产物但已纳入版本库，方便没有 Node 环境时直接导入开发者工具。
 
 ## API 摘要
 

@@ -41,6 +41,7 @@ interface RequestConfig {
  */
 class ApiClient {
   private baseURL: string;
+  private networkTipShown = false;
 
   constructor(baseURL: string) {
     this.baseURL = baseURL;
@@ -118,6 +119,19 @@ class ApiClient {
       throw err;
     } catch (error) {
       console.error('API request error:', error);
+      // 后端未启动时给出明确提示，避免小程序白屏无从排查（仅提示一次）
+      const msg = String((error as any)?.errMsg || (error as any)?.message || '');
+      if (
+        !this.networkTipShown &&
+        /request:fail|ECONNREFUSED|Failed to fetch|NetworkError|timeout/i.test(msg)
+      ) {
+        this.networkTipShown = true;
+        Taro.showToast({
+          title: '未连接后端服务，请先启动 start-backend.bat',
+          icon: 'none',
+          duration: 4000,
+        });
+      }
       throw error;
     }
   }

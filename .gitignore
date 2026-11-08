@@ -4,8 +4,12 @@ node_modules/
 
 # build output
 frontend/dist/
-weapp/
 backend/dist/
+
+# 小程序产物 weapp/ 特意入库：微信开发者工具直接导入仓库根目录即可运行，
+# 无需本地安装 Node 环境。修改前端源码后执行 frontend 下的 build:weapp 重新生成。
+weapp/node_modules/
+weapp/.cache/
 
 # env
 .env
@@ -20,6 +24,7 @@ npm-debug.log*
 .DS_Store
 .idea/
 .vscode/
+project.private.config.json
 
 # runtime / tooling (session-specific)
 .genie/

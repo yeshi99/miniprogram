@@ -1,0 +1,33 @@
+{
+  "miniprogramRoot": "weapp/",
+  "projectname": "wuhan-house",
+  "description": "武汉租售小程序（Taro 源码在 frontend/，小程序产物在 weapp/）",
+  "appid": "touristappid",
+  "compileType": "miniprogram",
+  "libVersion": "3.17.3",
+  "setting": {
+    "urlCheck": false,
+    "es6": false,
+    "enhance": false,
+    "postcss": false,
+    "minified": false,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "useIsolateContext": true,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "minifyWXML": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
+  },
+  "condition": {}
+}

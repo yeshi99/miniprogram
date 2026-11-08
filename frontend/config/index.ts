@@ -19,7 +19,10 @@ const config: UserConfigExport = {
     TARO_APP_API_URL: JSON.stringify(process.env.TARO_APP_API_URL || ''),
   },
   copy: {
-    patterns: [],
+    patterns: [
+      // 微信开发者工具工程配置，随构建一起输出到 weapp/
+      { from: 'project.config.json', to: 'project.config.json' }
+    ],
     options: {}
   },
   framework: 'react',

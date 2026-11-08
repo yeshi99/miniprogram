@@ -50,6 +50,11 @@
     "url": "/my-listings"
   },
   {
+    "pageKey": "pay",
+    "title": "武汉租售",
+    "url": "/pay"
+  },
+  {
     "pageKey": "publish",
     "title": "武汉租售",
     "url": "/publish"
