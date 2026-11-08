@@ -3,6 +3,6 @@
   "sub_project_type": "",
   "name": "武汉租售",
   "app_slug": "wuhan-house",
-  "version_description": "Add WeChat mini program build output and project config",
+  "version_description": "Fix mini program project config path",
   "preview_type": "mobile"
 }
